@@ -1,0 +1,15 @@
+{
+  "name": "ra1ndr0op-waitlist",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Ra1ndr0op waitlist landing page powered by Cloudflare Pages Functions and D1.",
+  "scripts": {
+    "dev": "wrangler pages dev . --d1=waitlist_db --compatibility-date=2026-05-28 --persist-to=./.wrangler/state",
+    "db:init:local": "powershell -NoProfile -ExecutionPolicy Bypass -File ./scripts/init-local-d1.ps1",
+    "db:init:remote": "powershell -NoProfile -ExecutionPolicy Bypass -File ./scripts/init-remote-d1.ps1",
+    "verify": "powershell -NoProfile -ExecutionPolicy Bypass -File ./verify.ps1"
+  },
+  "devDependencies": {
+    "wrangler": "4.95.0"
+  }
+}

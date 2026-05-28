@@ -3,54 +3,98 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ra1ndr0op</title>
+    <title>Ra1ndr0op | 即将上线</title>
     <meta
       name="description"
-      content="Ra1ndr0op 的个人主页，包含简介、常用链接和联系方式。"
+      content="Ra1ndr0op 即将上线。留下邮箱，第一时间收到产品开放通知。"
     />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <main class="page">
-      <section class="hero">
-        <p class="eyebrow">Personal Homepage</p>
-        <h1>Ra1ndr0op</h1>
-        <p class="intro">
-          这是我的个人主页。这里会慢慢放上项目、想法、常用入口和对外联系方式。
-        </p>
-      </section>
+      <section class="hero" aria-labelledby="page-title">
+        <div class="hero-copy">
+          <p class="eyebrow">Waitlist</p>
+          <h1 id="page-title">Ra1ndr0op</h1>
+          <p class="intro">
+            产品正在准备中。留下邮箱，第一时间收到上线通知和早期体验入口。
+          </p>
 
-      <section class="panel" id="about">
-        <h2>关于我</h2>
-        <p>
-          我在这里整理自己的作品、实验和长期想做的事情。这个版本先保持简单，后面会继续补充内容。
-        </p>
-      </section>
+          <form class="waitlist-form" id="waitlist-form" novalidate>
+            <label class="sr-only" for="email">邮箱地址</label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              autocomplete="email"
+              inputmode="email"
+              placeholder="your@email.com"
+              required
+            />
+            <button type="submit">通知我</button>
+          </form>
 
-      <section class="panel" id="links">
-        <h2>链接入口</h2>
-        <div class="link-grid">
-          <a
-            class="link-card"
-            href="https://github.com/Ra1ndr0op"
-            target="_blank"
-            rel="noreferrer"
-            >GitHub</a
-          >
-          <a class="link-card" href="mailto:hello@example.com">Email</a>
-          <a class="link-card" href="https://x.com/" target="_blank" rel="noreferrer"
-            >X / Twitter</a
-          >
-          <a class="link-card" href="#" aria-disabled="true">博客（预留）</a>
+          <p class="form-message" id="form-message" role="status" aria-live="polite"></p>
+        </div>
+
+        <div class="signal-visual" aria-hidden="true">
+          <div class="orbit orbit-one"></div>
+          <div class="orbit orbit-two"></div>
+          <div class="signal-card">
+            <span class="status-dot"></span>
+            <span>全球边缘节点已就绪</span>
+          </div>
+          <div class="email-chip chip-one">hello@ra1ndr0op.dev</div>
+          <div class="email-chip chip-two">early@product.test</div>
+          <div class="email-chip chip-three">launch@soon.io</div>
         </div>
       </section>
-
-      <section class="panel" id="contact">
-        <h2>联系我</h2>
-        <p>
-          如果你想聊项目、合作或者随便交流点有意思的东西，可以先通过 GitHub 或邮箱找到我。
-        </p>
-      </section>
     </main>
+
+    <script>
+      const form = document.getElementById("waitlist-form");
+      const emailInput = document.getElementById("email");
+      const message = document.getElementById("form-message");
+      const submitButton = form.querySelector("button");
+
+      function setMessage(text, type) {
+        message.textContent = text;
+        message.dataset.type = type;
+      }
+
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+
+        const email = emailInput.value.trim();
+        if (!email) {
+          setMessage("请输入邮箱", "error");
+          emailInput.focus();
+          return;
+        }
+
+        submitButton.disabled = true;
+        setMessage("提交中...", "neutral");
+
+        try {
+          const response = await fetch("/api/subscribe", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email }),
+          });
+          const data = await response.json();
+
+          if (response.ok) {
+            setMessage(data.message || "成功加入等待列表！", "success");
+            emailInput.value = "";
+          } else {
+            setMessage(data.error || "出错了，请稍后重试", "error");
+          }
+        } catch {
+          setMessage("网络连接失败，请稍后重试", "error");
+        } finally {
+          submitButton.disabled = false;
+        }
+      });
+    </script>
   </body>
 </html>
