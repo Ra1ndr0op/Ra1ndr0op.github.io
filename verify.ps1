@@ -25,12 +25,18 @@ if ($index -notmatch "Ra1ndr0op") { throw "index.html must contain site title" }
 if ($index -notmatch 'id="waitlist-form"') { throw "index.html must contain waitlist form" }
 if ($index -notmatch 'type="email"') { throw "index.html must contain email input" }
 if ($index -notmatch "/api/subscribe") { throw "index.html must submit to /api/subscribe" }
-$waitlistCopy = -join ([char[]](0x7559, 0x4E0B, 0x90AE, 0x7BB1))
-if ($index -notmatch $waitlistCopy) { throw "index.html must contain readable Chinese waitlist copy" }
+foreach ($requiredCopy in @("Resources", "Writing", "About", "Subscribe")) {
+  if ($index -notmatch $requiredCopy) {
+    throw "index.html must contain personal site section: $requiredCopy"
+  }
+}
+$subscribeCopy = -join ([char[]](0x83B7, 0x53D6, 0x66F4, 0x65B0))
+if ($index -notmatch $subscribeCopy) { throw "index.html must contain readable Chinese subscribe copy" }
 
 $styles = Get-Content -Raw -Encoding UTF8 (Join-Path $root "styles.css")
 if ($styles -notmatch ":root") { throw "styles.css must define root variables" }
 if ($styles -notmatch "waitlist-form") { throw "styles.css must style the waitlist form" }
+if ($styles -notmatch "resource-grid") { throw "styles.css must style resource cards" }
 
 $api = Get-Content -Raw -Encoding UTF8 (Join-Path $root "functions\api\subscribe.ts")
 if ($api -notmatch "waitlist_db") { throw "subscribe.ts must use waitlist_db D1 binding" }

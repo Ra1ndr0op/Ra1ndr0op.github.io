@@ -3,53 +3,120 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ra1ndr0op | 即将上线</title>
+    <title>Ra1ndr0op | 个人主页</title>
     <meta
       name="description"
-      content="Ra1ndr0op 即将上线。留下邮箱，第一时间收到产品开放通知。"
+      content="Ra1ndr0op 的个人主页，整理创作、资源、文章和订阅入口。"
     />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <main class="page">
-      <section class="hero" aria-labelledby="page-title">
-        <div class="hero-copy">
-          <p class="eyebrow">Waitlist</p>
-          <h1 id="page-title">Ra1ndr0op</h1>
-          <p class="intro">
-            产品正在准备中。留下邮箱，第一时间收到上线通知和早期体验入口。
-          </p>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="Ra1ndr0op 首页">Ra1ndr0op</a>
+      <nav class="nav" aria-label="主导航">
+        <a href="#resources">Resources</a>
+        <a href="#writing">Writing</a>
+        <a href="#about">About</a>
+        <a href="#subscribe">Subscribe</a>
+      </nav>
+    </header>
 
-          <form class="waitlist-form" id="waitlist-form" novalidate>
-            <label class="sr-only" for="email">邮箱地址</label>
-            <input
-              id="email"
-              name="email"
-              type="email"
-              autocomplete="email"
-              inputmode="email"
-              placeholder="your@email.com"
-              required
-            />
-            <button type="submit">通知我</button>
-          </form>
+    <main id="top">
+      <section class="hero section" aria-labelledby="page-title">
+        <p class="eyebrow">Independent creator</p>
+        <h1 id="page-title">Ra1ndr0op</h1>
+        <p class="hero-lede">
+          你的核心一句话放在这里。用最短的语言说明你研究什么、创造什么、以及别人为什么应该关注你。
+        </p>
 
-          <p class="form-message" id="form-message" role="status" aria-live="polite"></p>
+        <form class="waitlist-form" id="waitlist-form" novalidate>
+          <label class="sr-only" for="email">邮箱地址</label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            autocomplete="email"
+            inputmode="email"
+            placeholder="your@email.com"
+            required
+          />
+          <button type="submit">获取更新</button>
+        </form>
+        <p class="form-note">订阅你的更新、文章和项目发布。这里之后可以换成你的真实承诺。</p>
+        <p class="form-message" id="form-message" role="status" aria-live="polite"></p>
+      </section>
+
+      <section class="section split-section" id="resources" aria-labelledby="resources-title">
+        <div>
+          <p class="eyebrow">Resources</p>
+          <h2 id="resources-title">资源标题占位</h2>
         </div>
+        <div class="resource-grid">
+          <article class="resource-card">
+            <span class="card-kicker">01</span>
+            <h3>资源标题占位</h3>
+            <p>这里放你的免费资源、工具、清单或入口简介。</p>
+          </article>
+          <article class="resource-card">
+            <span class="card-kicker">02</span>
+            <h3>资源标题占位</h3>
+            <p>这里放你的项目、服务、产品或长期作品。</p>
+          </article>
+          <article class="resource-card">
+            <span class="card-kicker">03</span>
+            <h3>资源标题占位</h3>
+            <p>这里放你希望访客下一步点击的内容。</p>
+          </article>
+        </div>
+      </section>
 
-        <div class="signal-visual" aria-hidden="true">
-          <div class="orbit orbit-one"></div>
-          <div class="orbit orbit-two"></div>
-          <div class="signal-card">
-            <span class="status-dot"></span>
-            <span>全球边缘节点已就绪</span>
-          </div>
-          <div class="email-chip chip-one">hello@ra1ndr0op.dev</div>
-          <div class="email-chip chip-two">early@product.test</div>
-          <div class="email-chip chip-three">launch@soon.io</div>
+      <section class="section writing-section" id="writing" aria-labelledby="writing-title">
+        <div class="section-heading">
+          <p class="eyebrow">Writing</p>
+          <h2 id="writing-title">文章标题占位</h2>
+        </div>
+        <div class="article-list">
+          <article class="article-row">
+            <span>文章标题占位</span>
+            <time datetime="2026-05-28">日期占位</time>
+          </article>
+          <article class="article-row">
+            <span>文章标题占位</span>
+            <time datetime="2026-05-28">日期占位</time>
+          </article>
+          <article class="article-row">
+            <span>文章标题占位</span>
+            <time datetime="2026-05-28">日期占位</time>
+          </article>
+        </div>
+      </section>
+
+      <section class="section about-section" id="about" aria-labelledby="about-title">
+        <div class="portrait-card" aria-hidden="true">
+          <div class="portrait-mark">R</div>
+        </div>
+        <div class="about-copy">
+          <p class="eyebrow">About</p>
+          <h2 id="about-title">关于你的占位介绍</h2>
+          <p>
+            这里先保留为空白感强的个人介绍。之后可以写你是谁、你长期关注的问题、你正在构建的东西，以及读者为什么应该留下邮箱。
+          </p>
         </div>
       </section>
     </main>
+
+    <footer class="site-footer" id="subscribe">
+      <div>
+        <p class="eyebrow">Subscribe</p>
+        <h2>获取更新</h2>
+        <p>留下邮箱，之后接收你的文章、资源和项目更新。</p>
+      </div>
+      <div class="footer-links" aria-label="社交链接">
+        <a href="https://github.com/Ra1ndr0op" target="_blank" rel="noreferrer">GitHub</a>
+        <a href="mailto:hello@example.com">Email</a>
+        <a href="#" aria-disabled="true">X</a>
+      </div>
+    </footer>
 
     <script>
       const form = document.getElementById("waitlist-form");
@@ -84,7 +151,7 @@
           const data = await response.json();
 
           if (response.ok) {
-            setMessage(data.message || "成功加入等待列表！", "success");
+            setMessage(data.message || "订阅成功！", "success");
             emailInput.value = "";
           } else {
             setMessage(data.error || "出错了，请稍后重试", "error");
