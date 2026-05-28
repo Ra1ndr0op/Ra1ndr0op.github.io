@@ -13,9 +13,7 @@
   <body>
     <header class="site-header">
       <a class="mark" href="#top" aria-label="Ra1ndr0op 首页">R1</a>
-      <nav class="top-link" aria-label="主导航">
-        <a href="#subscribe">Read The Ra1ndr0op Notes</a>
-      </nav>
+      <a class="top-link" href="#subscribe">Read The Ra1ndr0op Notes</a>
     </header>
 
     <main id="top">
@@ -23,110 +21,93 @@
         <p class="spaced-label">R A 1 N D R 0 O P</p>
         <h1 id="page-title">
           <span>Ship Fast.</span>
-          <span>Learn Publicly.</span>
+          <span>Learn In Public.</span>
           <span>Build With AI.</span>
         </h1>
         <p class="hero-lede">
-          这里记录我如何用 Codex、Cloudflare 和极简工具，把一个个想法从聊天窗口推到真实网页。
-          少一点空想，多一点上线；先拿到信号，再决定下一步。
+          加入正在用 Codex、Cloudflare 和极简工具验证想法的人。这里写 AI 协作、独立产品、上线复盘和从 0 到 1 的过程。
         </p>
-
-        <form class="subscribe-form" id="waitlist-form" novalidate>
-          <label class="sr-only" for="email">邮箱地址</label>
-          <input
-            id="email"
-            name="email"
-            type="email"
-            autocomplete="email"
-            inputmode="email"
-            placeholder="your@email.com"
-            required
-          />
-          <button type="submit">获取更新</button>
-        </form>
-        <p class="micro-link">订阅 AI 协作开发、快速上线、独立产品实验和资源清单。</p>
-        <p class="form-message" id="form-message" role="status" aria-live="polite"></p>
+        <a class="hero-cta" href="#subscribe">↗ Receive 2 build notes a week</a>
       </section>
 
       <section class="section resource-section" id="resources" aria-labelledby="resources-title">
         <p class="spaced-label">R E S O U R C E S</p>
-        <h2 id="resources-title">Build The New 1%</h2>
-        <p class="section-subtitle">未来个人站不只是名片，而是公开实验室、数据库和信任入口。</p>
+        <h2 id="resources-title" class="resource-title">
+          <span>Join The</span>
+          <span>New 1%</span>
+        </h2>
+        <p class="section-subtitle">用这些系统，把想法更快变成可以验证的页面、工具和产品。</p>
 
         <div class="resource-grid">
-          <article class="resource-card wide-card">
-            <div class="card-visual system-card">
-              <span>SHIP / SYSTEM</span>
-              <strong>30 MINUTE LAUNCH</strong>
+          <article class="resource-card">
+            <div class="card-visual proof-visual">
+              <strong>BUILD/PROOF</strong>
             </div>
-            <h3>Cloudflare 等待列表模板</h3>
-            <p>Pages 前端、Functions API、D1 存邮箱。先上线，再让真实用户告诉你方向。</p>
-            <a href="#subscribe">Join the build notes</a>
+            <h3>Build Proof - 快速上线指南</h3>
+            <p>我的 Cloudflare、D1、GitHub 和 Codex 工作流，适合一人产品从想法到上线。</p>
+            <a href="#subscribe">↗ Join Build Proof</a>
           </article>
 
-          <article class="resource-card image-card">
+          <article class="resource-card">
             <img
+              class="card-image"
               src="assets/creator-workspace.webp"
               alt="雨夜工作台、代码屏幕和云端节点构成的创作者视觉图"
             />
-            <h3>AI 协作开发工作流</h3>
-            <p>把需求、代码、浏览器验收、部署检查串起来，减少卡在环境里的时间。</p>
-            <a href="#writing">Read the notes</a>
+            <h3>AI Canvas - 协作开发画布</h3>
+            <p>把需求、页面、API、数据库、视觉验收和部署回归放到同一张执行画布里。</p>
+            <a href="#writing">↗ Read The Workflow</a>
           </article>
 
-          <article class="resource-card image-card">
-            <div class="card-visual canvas-card">
-              <span>CANVAS</span>
-              <strong>Idea -> Page -> Signal</strong>
-              <small>Prompt / Code / DNS / D1 / Deploy</small>
+          <article class="resource-card">
+            <div class="card-visual book-visual">
+              <small>purpose & product</small>
+              <strong>One Person Systems</strong>
             </div>
-            <h3>产品验证画布</h3>
-            <p>一张清单梳理：想法、页面、收集入口、数据写入、下一轮迭代。</p>
-            <a href="#now">See current experiments</a>
+            <h3>One Person Systems - 一人公司笔记</h3>
+            <p>不先堆复杂架构，先构建能收集信号、积累内容、沉淀信任的小系统。</p>
+            <a href="#now">↗ See Experiments</a>
           </article>
 
-          <article class="resource-card image-card">
-            <div class="card-visual focus-card">
-              <span>FOCUS</span>
-              <strong>Small Tools, Real Feedback</strong>
+          <article class="resource-card">
+            <div class="card-visual focus-visual">
+              <strong>THE ART OF SHIPPING</strong>
             </div>
-            <h3>上线前检查清单</h3>
-            <p>HTTPS、DNS、API、移动端、表单状态和数据库写入，每次发布都过一遍。</p>
-            <a href="#subscribe">Get the checklist later</a>
+            <h3>The Art Of Shipping - 上线清单</h3>
+            <p>DNS、HTTPS、表单、D1 写入、移动端溢出、缓存验证，每次发布都检查。</p>
+            <a href="#subscribe">↗ Get The Checklist</a>
           </article>
         </div>
       </section>
 
       <section class="section writing-section" id="writing" aria-labelledby="writing-title">
-        <p class="spaced-label">W R I T I N G</p>
-        <h2 id="writing-title">Notes From The Build</h2>
-        <div class="article-list">
-          <article class="article-row">
-            <span>产品不要死在“还没找到服务器”里</span>
-            <p>用 $0 成本先把验证入口上线。</p>
-            <time datetime="2026-05-29">Draft</time>
+        <p class="spaced-label">B L O G</p>
+        <h2 id="writing-title">Read The Latest Notes</h2>
+        <div class="post-grid">
+          <article>
+            <span>01</span>
+            <h3>产品不要死在“还没找到服务器”里</h3>
+            <p>为什么我更喜欢先用 $0 成本把验证入口上线。</p>
           </article>
-          <article class="article-row">
-            <span>把 GitHub、Cloudflare 和 D1 串起来</span>
+          <article>
+            <span>02</span>
+            <h3>把 GitHub、Cloudflare 和 D1 串起来</h3>
             <p>从 push 到自动部署，再到邮箱进入数据库。</p>
-            <time datetime="2026-05-29">Draft</time>
           </article>
-          <article class="article-row">
-            <span>浏览器插件卡住时，如何继续验收</span>
+          <article>
+            <span>03</span>
+            <h3>浏览器插件卡住时，如何继续验收</h3>
             <p>本地预览、截图、接口测试和线上回归。</p>
-            <time datetime="2026-05-29">Note</time>
           </article>
         </div>
       </section>
 
       <section class="section about-section" id="about" aria-labelledby="about-title">
-        <div>
-          <p class="spaced-label">A B O U T</p>
-          <h2 id="about-title">A public lab for one-person products.</h2>
-        </div>
+        <p class="spaced-label">A B O U T</p>
+        <h2 id="about-title">A public lab for one-person products.</h2>
         <div class="about-copy">
           <p>
-            Ra1ndr0op 是我的公开实验室。我会在这里整理 AI 原生工作流、低成本部署、独立产品验证、
+            Ra1ndr0op 是我的公开实验室。我会在这里整理 AI 原生工作流、低成本部署、独立产品验证，
             以及一个人如何把模糊想法变成可以被访问、被提交、被反馈的真实页面。
           </p>
           <p>
@@ -160,8 +141,22 @@
 
     <footer class="site-footer" id="subscribe">
       <p class="spaced-label">S U B S C R I B E</p>
-      <h2>Get the next build note.</h2>
+      <h2>Get The Ra1ndr0op Notes</h2>
       <p>留下邮箱，收到我的上线复盘、工具清单和 AI 协作开发笔记。</p>
+      <form class="subscribe-form" id="waitlist-form" novalidate>
+        <label class="sr-only" for="email">邮箱地址</label>
+        <input
+          id="email"
+          name="email"
+          type="email"
+          autocomplete="email"
+          inputmode="email"
+          placeholder="your@email.com"
+          required
+        />
+        <button type="submit">获取更新</button>
+      </form>
+      <p class="form-message" id="form-message" role="status" aria-live="polite"></p>
       <div class="footer-actions">
         <a href="https://github.com/Ra1ndr0op" target="_blank" rel="noreferrer">GitHub</a>
         <a href="mailto:hello@example.com">Email</a>
