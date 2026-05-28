@@ -6,6 +6,7 @@ $requiredFiles = @(
   "styles.css",
   "CNAME",
   "assets\\.gitkeep",
+  "assets\\creator-workspace.webp",
   "functions\\api\\subscribe.ts",
   "schema.sql",
   "package.json",
@@ -25,18 +26,25 @@ if ($index -notmatch "Ra1ndr0op") { throw "index.html must contain site title" }
 if ($index -notmatch 'id="waitlist-form"') { throw "index.html must contain waitlist form" }
 if ($index -notmatch 'type="email"') { throw "index.html must contain email input" }
 if ($index -notmatch "/api/subscribe") { throw "index.html must submit to /api/subscribe" }
-foreach ($requiredCopy in @("Resources", "Writing", "About", "Subscribe")) {
+foreach ($requiredCopy in @("Resources", "Writing", "Now", "About", "Subscribe")) {
   if ($index -notmatch $requiredCopy) {
     throw "index.html must contain personal site section: $requiredCopy"
   }
 }
 $subscribeCopy = -join ([char[]](0x83B7, 0x53D6, 0x66F4, 0x65B0))
 if ($index -notmatch $subscribeCopy) { throw "index.html must contain readable Chinese subscribe copy" }
+foreach ($requiredCopy in @("Cloudflare", "Codex", "AI Native Builder", "Build in Public", "assets/creator-workspace.webp")) {
+  if ($index -notmatch [regex]::Escape($requiredCopy)) {
+    throw "index.html must contain richer personal site copy: $requiredCopy"
+  }
+}
 
 $styles = Get-Content -Raw -Encoding UTF8 (Join-Path $root "styles.css")
 if ($styles -notmatch ":root") { throw "styles.css must define root variables" }
 if ($styles -notmatch "waitlist-form") { throw "styles.css must style the waitlist form" }
 if ($styles -notmatch "resource-grid") { throw "styles.css must style resource cards" }
+if ($styles -notmatch "hero-visual") { throw "styles.css must style the hero image" }
+if ($styles -notmatch "signal-strip") { throw "styles.css must style the signal strip" }
 
 $api = Get-Content -Raw -Encoding UTF8 (Join-Path $root "functions\api\subscribe.ts")
 if ($api -notmatch "waitlist_db") { throw "subscribe.ts must use waitlist_db D1 binding" }

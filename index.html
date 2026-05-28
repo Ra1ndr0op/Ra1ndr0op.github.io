@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ra1ndr0op | 个人主页</title>
+    <title>Ra1ndr0op | AI Native Builder</title>
     <meta
       name="description"
-      content="Ra1ndr0op 的个人主页，整理创作、资源、文章和订阅入口。"
+      content="Ra1ndr0op 的个人主页：记录 AI 协作、独立产品、Cloudflare 部署和快速验证想法的过程。"
     />
     <link rel="stylesheet" href="styles.css" />
   </head>
@@ -16,6 +16,7 @@
       <nav class="nav" aria-label="主导航">
         <a href="#resources">Resources</a>
         <a href="#writing">Writing</a>
+        <a href="#now">Now</a>
         <a href="#about">About</a>
         <a href="#subscribe">Subscribe</a>
       </nav>
@@ -23,49 +24,84 @@
 
     <main id="top">
       <section class="hero section" aria-labelledby="page-title">
-        <p class="eyebrow">Independent creator</p>
-        <h1 id="page-title">Ra1ndr0op</h1>
-        <p class="hero-lede">
-          你的核心一句话放在这里。用最短的语言说明你研究什么、创造什么、以及别人为什么应该关注你。
-        </p>
+        <div class="hero-copy">
+          <p class="eyebrow">AI Native Builder / Build in Public</p>
+          <h1 id="page-title">Ra1ndr0op</h1>
+          <p class="hero-lede">
+            我在这里记录一个人如何借助 AI、Cloudflare 和极简工具，把想法从聊天窗口推到真实网页。
+            先上线，再迭代；先收集信号，再决定要不要做大。
+          </p>
 
-        <form class="waitlist-form" id="waitlist-form" novalidate>
-          <label class="sr-only" for="email">邮箱地址</label>
-          <input
-            id="email"
-            name="email"
-            type="email"
-            autocomplete="email"
-            inputmode="email"
-            placeholder="your@email.com"
-            required
+          <form class="waitlist-form" id="waitlist-form" novalidate>
+            <label class="sr-only" for="email">邮箱地址</label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              autocomplete="email"
+              inputmode="email"
+              placeholder="your@email.com"
+              required
+            />
+            <button type="submit">获取更新</button>
+          </form>
+          <p class="form-note">订阅后会收到新文章、工具实验、上线复盘和资源清单。</p>
+          <p class="form-message" id="form-message" role="status" aria-live="polite"></p>
+        </div>
+
+        <figure class="hero-visual">
+          <img
+            src="assets/creator-workspace.webp"
+            alt="雨夜工作台、代码屏幕和云端节点构成的创作者视觉图"
           />
-          <button type="submit">获取更新</button>
-        </form>
-        <p class="form-note">订阅你的更新、文章和项目发布。这里之后可以换成你的真实承诺。</p>
-        <p class="form-message" id="form-message" role="status" aria-live="polite"></p>
+          <figcaption>
+            <span>Current stack</span>
+            <strong>Cloudflare Pages + D1 + Codex</strong>
+          </figcaption>
+        </figure>
+      </section>
+
+      <section class="signal-strip section" aria-label="当前进度">
+        <div>
+          <span>01</span>
+          <strong>30 分钟上线</strong>
+          <p>从静态页面到可提交邮箱的真实站点，先把反馈入口搭起来。</p>
+        </div>
+        <div>
+          <span>02</span>
+          <strong>$0 验证成本</strong>
+          <p>用 Cloudflare Pages、Functions 和 D1 做早期产品的低成本实验。</p>
+        </div>
+        <div>
+          <span>03</span>
+          <strong>AI 协作开发</strong>
+          <p>把想法、排错、部署、视觉验收都变成可以复用的工作流。</p>
+        </div>
       </section>
 
       <section class="section split-section" id="resources" aria-labelledby="resources-title">
-        <div>
+        <div class="section-intro">
           <p class="eyebrow">Resources</p>
-          <h2 id="resources-title">资源标题占位</h2>
+          <h2 id="resources-title">正在整理的资源库</h2>
+          <p>
+            这里会放我自己真正用过的路线、脚本和部署清单。现在先放方向，不假装已经写完。
+          </p>
         </div>
         <div class="resource-grid">
           <article class="resource-card">
-            <span class="card-kicker">01</span>
-            <h3>资源标题占位</h3>
-            <p>这里放你的免费资源、工具、清单或入口简介。</p>
+            <span class="card-kicker">Guide</span>
+            <h3>Cloudflare 等待列表模板</h3>
+            <p>Pages 前端、Functions API、D1 存邮箱，一套适合早期想法验证的最小闭环。</p>
           </article>
           <article class="resource-card">
-            <span class="card-kicker">02</span>
-            <h3>资源标题占位</h3>
-            <p>这里放你的项目、服务、产品或长期作品。</p>
+            <span class="card-kicker">Workflow</span>
+            <h3>和 Codex 一起改站点</h3>
+            <p>把需求写成计划，让 AI 读仓库、改代码、跑验证、推上线，留下可追踪的过程。</p>
           </article>
           <article class="resource-card">
-            <span class="card-kicker">03</span>
-            <h3>资源标题占位</h3>
-            <p>这里放你希望访客下一步点击的内容。</p>
+            <span class="card-kicker">Checklist</span>
+            <h3>上线前检查清单</h3>
+            <p>DNS、HTTPS、后端接口、移动端溢出、表单状态和数据库写入，一个个过。</p>
           </article>
         </div>
       </section>
@@ -73,20 +109,61 @@
       <section class="section writing-section" id="writing" aria-labelledby="writing-title">
         <div class="section-heading">
           <p class="eyebrow">Writing</p>
-          <h2 id="writing-title">文章标题占位</h2>
+          <h2 id="writing-title">近期会写的东西</h2>
+          <p>不是宏大叙事，先写现场笔记。把踩坑、判断和结果留下来。</p>
         </div>
         <div class="article-list">
           <article class="article-row">
-            <span>文章标题占位</span>
-            <time datetime="2026-05-28">日期占位</time>
+            <div>
+              <span>产品不要死在“还没找到服务器”里</span>
+              <p>为什么我更喜欢先用 $0 成本把验证入口上线。</p>
+            </div>
+            <time datetime="2026-05-28">Draft</time>
           </article>
           <article class="article-row">
-            <span>文章标题占位</span>
-            <time datetime="2026-05-28">日期占位</time>
+            <div>
+              <span>把 GitHub、Cloudflare 和 D1 串起来</span>
+              <p>从 push 到自动部署，再到邮箱进入数据库。</p>
+            </div>
+            <time datetime="2026-05-28">Draft</time>
           </article>
           <article class="article-row">
-            <span>文章标题占位</span>
-            <time datetime="2026-05-28">日期占位</time>
+            <div>
+              <span>当浏览器插件卡住时，我是怎么继续验收的</span>
+              <p>本地预览、CDP、curl 和线上接口测试的组合拳。</p>
+            </div>
+            <time datetime="2026-05-28">Note</time>
+          </article>
+          <article class="article-row">
+            <div>
+              <span>一个人公司需要的不是复杂架构</span>
+              <p>先做出用户能点击、能留下邮箱、能反馈的东西。</p>
+            </div>
+            <time datetime="2026-05-28">Idea</time>
+          </article>
+        </div>
+      </section>
+
+      <section class="section now-section" id="now" aria-labelledby="now-title">
+        <div class="section-intro">
+          <p class="eyebrow">Now</p>
+          <h2 id="now-title">现在正在发生</h2>
+        </div>
+        <div class="timeline">
+          <article>
+            <span>Build</span>
+            <h3>把 raindropcn.com 变成个人品牌主页</h3>
+            <p>从等待列表单页升级为更完整的创作者站：资源、写作、关于、订阅入口都在一个页面里。</p>
+          </article>
+          <article>
+            <span>Learn</span>
+            <h3>梳理 AI 协作开发流程</h3>
+            <p>让需求、代码、浏览器验收和部署检查连在一起，减少“我不知道下一步”的摩擦。</p>
+          </article>
+          <article>
+            <span>Ship</span>
+            <h3>继续保持低成本上线</h3>
+            <p>不用先学一整套重型运维，先让想法被真实访问、真实提交、真实记录。</p>
           </article>
         </div>
       </section>
@@ -94,12 +171,21 @@
       <section class="section about-section" id="about" aria-labelledby="about-title">
         <div class="portrait-card" aria-hidden="true">
           <div class="portrait-mark">R</div>
+          <div class="portrait-lines">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
         </div>
         <div class="about-copy">
           <p class="eyebrow">About</p>
-          <h2 id="about-title">关于你的占位介绍</h2>
+          <h2 id="about-title">这里先不假装成熟</h2>
           <p>
-            这里先保留为空白感强的个人介绍。之后可以写你是谁、你长期关注的问题、你正在构建的东西，以及读者为什么应该留下邮箱。
+            Ra1ndr0op 是一个正在搭建中的个人空间。它会慢慢变成我的公开实验室：
+            记录我如何用 AI 写代码、用 Cloudflare 快速上线、用写作整理判断，以及如何把一个个小想法变成能被别人使用的东西。
+          </p>
+          <p>
+            如果你也关心独立产品、AI 原生工作流、低成本部署和从 0 到 1 的验证过程，可以先订阅。
           </p>
         </div>
       </section>
@@ -108,13 +194,13 @@
     <footer class="site-footer" id="subscribe">
       <div>
         <p class="eyebrow">Subscribe</p>
-        <h2>获取更新</h2>
-        <p>留下邮箱，之后接收你的文章、资源和项目更新。</p>
+        <h2>跟进下一次上线</h2>
+        <p>留下邮箱，收到新文章、资源整理和产品实验。不会频繁打扰，只发真正有用的更新。</p>
       </div>
       <div class="footer-links" aria-label="社交链接">
         <a href="https://github.com/Ra1ndr0op" target="_blank" rel="noreferrer">GitHub</a>
         <a href="mailto:hello@example.com">Email</a>
-        <a href="#" aria-disabled="true">X</a>
+        <a href="#top">Back to top</a>
       </div>
     </footer>
 
