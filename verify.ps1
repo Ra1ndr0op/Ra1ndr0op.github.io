@@ -33,7 +33,7 @@ foreach ($requiredCopy in @("Resources", "Writing", "Now", "About", "Subscribe")
 }
 $subscribeCopy = -join ([char[]](0x83B7, 0x53D6, 0x66F4, 0x65B0))
 if ($index -notmatch $subscribeCopy) { throw "index.html must contain readable Chinese subscribe copy" }
-foreach ($requiredCopy in @("Cloudflare", "Codex", "AI Native Builder", "Build in Public", "assets/creator-workspace.webp")) {
+foreach ($requiredCopy in @("Cloudflare", "Codex", "AI Native Builder", "Build With AI", "assets/creator-workspace.webp")) {
   if ($index -notmatch [regex]::Escape($requiredCopy)) {
     throw "index.html must contain richer personal site copy: $requiredCopy"
   }
@@ -41,10 +41,10 @@ foreach ($requiredCopy in @("Cloudflare", "Codex", "AI Native Builder", "Build i
 
 $styles = Get-Content -Raw -Encoding UTF8 (Join-Path $root "styles.css")
 if ($styles -notmatch ":root") { throw "styles.css must define root variables" }
-if ($styles -notmatch "waitlist-form") { throw "styles.css must style the waitlist form" }
+if ($styles -notmatch "subscribe-form") { throw "styles.css must style the subscribe form" }
 if ($styles -notmatch "resource-grid") { throw "styles.css must style resource cards" }
-if ($styles -notmatch "hero-visual") { throw "styles.css must style the hero image" }
-if ($styles -notmatch "signal-strip") { throw "styles.css must style the signal strip" }
+if ($styles -notmatch "card-visual") { throw "styles.css must style visual cards" }
+if ($styles -notmatch "color-scheme: dark") { throw "styles.css must use the dark creator style" }
 
 $api = Get-Content -Raw -Encoding UTF8 (Join-Path $root "functions\api\subscribe.ts")
 if ($api -notmatch "waitlist_db") { throw "subscribe.ts must use waitlist_db D1 binding" }
