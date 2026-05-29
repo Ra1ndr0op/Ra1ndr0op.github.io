@@ -16,11 +16,15 @@ $requiredFiles = @(
   "posts\\ai-native-builder.html",
   "posts\\point-of-view.html",
   "posts\\ai-cannot-publish.html",
+  "projects\\stardew-valley-poster.html",
+  "projects\\minecraft-voxel-poster.html",
   "assets\\blog-systems.svg",
   "assets\\blog-map.svg",
   "assets\\blog-point-of-view.svg",
   "assets\\blog-ai-cannot-publish-thumb.jpg",
-  "assets\\ai-judgment-framework.jpg"
+  "assets\\ai-judgment-framework.jpg",
+  "assets\\project-stardew-valley-poster.jpg",
+  "assets\\project-minecraft-voxel-poster.jpg"
 )
 
 foreach ($relativePath in $requiredFiles) {
@@ -32,7 +36,7 @@ foreach ($relativePath in $requiredFiles) {
 
 $index = Get-Content -Raw -Encoding UTF8 (Join-Path $root "index.html")
 if ($index -notmatch "Ra1ndr0op") { throw "index.html must contain site title" }
-if ($index -notmatch "styles.css\?v=ai-article-20260529") { throw "index.html must load the current cache-busted stylesheet" }
+if ($index -notmatch "styles.css\?v=poster-projects-20260529") { throw "index.html must load the current cache-busted stylesheet" }
 if ($index -notmatch 'id="waitlist-form"') { throw "index.html must contain waitlist form" }
 if ($index -notmatch 'type="email"') { throw "index.html must contain email input" }
 if ($index -notmatch "/api/subscribe") { throw "index.html must submit to /api/subscribe" }
@@ -43,9 +47,14 @@ foreach ($requiredCopy in @("Resources", "Writing", "Who Is Ra1ndr0op?", "Subscr
 }
 $subscribeCopy = -join ([char[]](0x83B7, 0x53D6, 0x66F4, 0x65B0))
 if ($index -notmatch $subscribeCopy) { throw "index.html must contain readable Chinese subscribe copy" }
-foreach ($requiredCopy in @("Cloudflare", "Codex", "AI Native Builder", "Build With AI", "assets/creator-workspace.webp")) {
+foreach ($requiredCopy in @("Cloudflare", "Codex", "AI Native Builder", "Build With AI")) {
   if ($index -notmatch [regex]::Escape($requiredCopy)) {
     throw "index.html must contain richer personal site copy: $requiredCopy"
+  }
+}
+foreach ($requiredCopy in @("stardew-valley-poster", "minecraft-voxel-poster", "assets/project-stardew-valley-poster.jpg", "assets/project-minecraft-voxel-poster.jpg", "projects/stardew-valley-poster.html", "projects/minecraft-voxel-poster.html")) {
+  if ($index -notmatch [regex]::Escape($requiredCopy)) {
+    throw "index.html must contain poster project card/link: $requiredCopy"
   }
 }
 foreach ($requiredCopy in @("Explore Your Curiosity", "Read More Post", "posts/shipping-fast.html", "posts/ai-native-builder.html", "posts/point-of-view.html")) {
@@ -78,6 +87,9 @@ if ($styles -notmatch "card-visual") { throw "styles.css must style visual cards
 if ($styles -notmatch "blog-grid") { throw "styles.css must style blog cards" }
 if ($styles -notmatch "letter-page") { throw "styles.css must style post letter pages" }
 if ($styles -notmatch "letter-figure") { throw "styles.css must style letter figures" }
+if ($styles -notmatch "letter-callout") { throw "styles.css must style article callouts" }
+if ($styles -notmatch "project-summary") { throw "styles.css must style project pages" }
+if ($styles -notmatch "resource-main-link") { throw "styles.css must style clickable resource cards" }
 if ($styles -notmatch "who-layout") { throw "styles.css must style who section" }
 if ($styles -notmatch "portrait-orb") { throw "styles.css must style portrait block" }
 if ($styles -notmatch "color-scheme: dark") { throw "styles.css must use the dark creator style" }
@@ -112,9 +124,18 @@ foreach ($postName in @("shipping-fast.html", "ai-native-builder.html", "point-o
 }
 
 $aiPost = Get-Content -Raw -Encoding UTF8 (Join-Path $root "posts\ai-cannot-publish.html")
-foreach ($requiredCopy in @("assets/ai-judgment-framework.jpg", "letter-figure")) {
+foreach ($requiredCopy in @("assets/ai-judgment-framework.jpg", "letter-figure", "letter-callout", "letter-list")) {
   if ($aiPost -notmatch [regex]::Escape($requiredCopy)) {
     throw "AI article page must contain: $requiredCopy"
+  }
+}
+
+foreach ($projectName in @("stardew-valley-poster.html", "minecraft-voxel-poster.html")) {
+  $project = Get-Content -Raw -Encoding UTF8 (Join-Path $root "projects\$projectName")
+  foreach ($requiredCopy in @("project-page", "project-summary", "letter-figure", "letter-callout", "letter-list", "Back to projects")) {
+    if ($project -notmatch [regex]::Escape($requiredCopy)) {
+      throw "project page $projectName must contain: $requiredCopy"
+    }
   }
 }
 

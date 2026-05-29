@@ -17,6 +17,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -62,7 +63,7 @@ img {
 
 .top-link,
 .hero-cta,
-.resource-card a,
+.resource-action,
 .footer-actions a {
   font-weight: 900;
 }
@@ -181,6 +182,17 @@ h3 {
   min-width: 0;
 }
 
+.resource-main-link {
+  display: block;
+}
+
+.resource-main-link:hover h3,
+.resource-main-link:focus-visible h3 {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+
 .card-visual,
 .card-image {
   width: 100%;
@@ -190,6 +202,22 @@ h3 {
 
 .card-image {
   object-fit: cover;
+}
+
+.project-card .card-image {
+  margin-bottom: 18px;
+  border: 1px solid var(--line);
+  background: var(--paper);
+}
+
+.project-kicker {
+  display: block;
+  margin-bottom: 9px;
+  color: var(--accent);
+  font-size: 0.76rem;
+  font-weight: 930;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
 }
 
 .card-visual {
@@ -269,7 +297,8 @@ h3 {
   line-height: 1.36;
 }
 
-.resource-card a {
+.resource-action {
+  display: inline-flex;
   text-decoration: underline;
   text-decoration-thickness: 2px;
   text-underline-offset: 4px;
@@ -651,9 +680,9 @@ h3 {
 .letter-deck {
   margin: 0 0 28px;
   color: var(--ink);
-  font-size: clamp(1.18rem, 2.05vw, 1.43rem);
+  font-size: clamp(1.05rem, 1.55vw, 1.24rem);
   font-weight: 560;
-  line-height: 1.36;
+  line-height: 1.5;
 }
 
 .letter-body {
@@ -661,17 +690,53 @@ h3 {
 }
 
 .letter-body p {
-  margin: 0 0 26px;
+  margin: 0 0 22px;
   color: var(--ink);
-  font-size: clamp(1.14rem, 2vw, 1.38rem);
-  font-weight: 540;
-  line-height: 1.42;
+  font-size: clamp(1rem, 1.45vw, 1.14rem);
+  font-weight: 520;
+  line-height: 1.68;
 }
 
 .letter-body h2 {
-  margin: 42px 0 18px;
-  font-size: clamp(1.78rem, 3vw, 2.35rem);
-  line-height: 0.98;
+  margin: 50px 0 16px;
+  font-size: clamp(1.55rem, 2.4vw, 2.05rem);
+  line-height: 1.08;
+}
+
+.letter-callout {
+  margin: 34px 0;
+  padding: 22px 24px 24px;
+  border-left: 4px solid var(--accent);
+  background: rgba(255, 255, 255, 0.055);
+  color: var(--ink);
+  font-size: clamp(1.18rem, 2vw, 1.5rem);
+  font-weight: 900;
+  line-height: 1.22;
+  letter-spacing: -0.035em;
+}
+
+.letter-list {
+  display: grid;
+  gap: 10px;
+  margin: 30px 0 34px;
+  padding: 0;
+  list-style: none;
+}
+
+.letter-list li {
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--ink);
+  font-size: clamp(0.98rem, 1.35vw, 1.1rem);
+  font-weight: 730;
+  line-height: 1.45;
+}
+
+.letter-list li::before {
+  content: "— ";
+  color: var(--accent);
+  font-weight: 950;
 }
 
 .letter-figure {
@@ -706,6 +771,41 @@ h3 {
   line-height: 1.45;
 }
 
+.project-page .letter-body {
+  max-width: 760px;
+}
+
+.project-summary {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin: 32px 0 44px;
+}
+
+.project-summary div {
+  min-width: 0;
+  padding: 16px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.project-summary span {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--soft);
+  font-size: 0.74rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.project-summary strong {
+  display: block;
+  color: var(--ink);
+  font-size: clamp(1rem, 1.45vw, 1.18rem);
+  line-height: 1.18;
+}
+
 @media (max-width: 900px) {
   .resource-grid,
   .blog-grid,
@@ -723,6 +823,10 @@ h3 {
 
   .who-layout {
     text-align: left;
+  }
+
+  .project-summary {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -828,7 +932,19 @@ h3 {
 
   .letter-header,
   .letter-page {
-    width: calc(100vw - 32px);
+    width: min(358px, calc(100vw - 32px));
+    max-width: min(358px, calc(100vw - 32px));
+    min-width: 0;
+    margin-left: 16px;
+    margin-right: auto;
+  }
+
+  .letter-subscribe,
+  .letter-article,
+  .project-summary,
+  .project-summary div {
+    max-width: 100%;
+    min-width: 0;
   }
 
   .letter-page {
@@ -845,10 +961,12 @@ h3 {
   }
 
   .letter-article h1 {
-    font-size: clamp(1.78rem, 8.7vw, 2.18rem);
+    font-size: clamp(1.72rem, 8vw, 2.05rem);
     letter-spacing: 0;
     line-height: 1.08;
-    word-break: break-all;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    hyphens: auto;
   }
 
   .letter-subscribe h2,
@@ -858,10 +976,13 @@ h3 {
   .letter-article h1,
   .letter-body p,
   .letter-body h2,
+  .letter-callout,
+  .letter-list li,
   .letter-footer a,
   .letter-footer p {
     max-width: 100%;
     overflow-wrap: anywhere;
     word-break: break-word;
+    hyphens: auto;
   }
 }
