@@ -643,7 +643,7 @@ h3 {
   max-width: 650px;
   margin: 0 0 28px;
   font-size: clamp(3rem, 6.5vw, 4.85rem);
-  line-height: 0.91;
+  line-height: 0.98;
   overflow-wrap: anywhere;
   word-break: break-word;
 }
@@ -672,6 +672,24 @@ h3 {
   margin: 42px 0 18px;
   font-size: clamp(1.78rem, 3vw, 2.35rem);
   line-height: 0.98;
+}
+
+.letter-figure {
+  margin: 40px 0;
+}
+
+.letter-figure img {
+  width: 100%;
+  border: 1px solid var(--line);
+  background: #f4f1e8;
+}
+
+.letter-figure figcaption {
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 650;
+  line-height: 1.45;
 }
 
 .letter-footer {
@@ -827,9 +845,10 @@ h3 {
   }
 
   .letter-article h1 {
-    font-size: clamp(2.05rem, 10.5vw, 2.62rem);
-    letter-spacing: -0.04em;
-    line-height: 0.98;
+    font-size: clamp(1.78rem, 8.7vw, 2.18rem);
+    letter-spacing: 0;
+    line-height: 1.08;
+    word-break: break-all;
   }
 
   .letter-subscribe h2,

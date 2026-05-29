@@ -15,9 +15,12 @@ $requiredFiles = @(
   "posts\\shipping-fast.html",
   "posts\\ai-native-builder.html",
   "posts\\point-of-view.html",
+  "posts\\ai-cannot-publish.html",
   "assets\\blog-systems.svg",
   "assets\\blog-map.svg",
-  "assets\\blog-point-of-view.svg"
+  "assets\\blog-point-of-view.svg",
+  "assets\\blog-ai-cannot-publish-thumb.jpg",
+  "assets\\ai-judgment-framework.jpg"
 )
 
 foreach ($relativePath in $requiredFiles) {
@@ -29,7 +32,7 @@ foreach ($relativePath in $requiredFiles) {
 
 $index = Get-Content -Raw -Encoding UTF8 (Join-Path $root "index.html")
 if ($index -notmatch "Ra1ndr0op") { throw "index.html must contain site title" }
-if ($index -notmatch "styles.css\?v=blog-links-20260529") { throw "index.html must load the current cache-busted stylesheet" }
+if ($index -notmatch "styles.css\?v=ai-article-20260529") { throw "index.html must load the current cache-busted stylesheet" }
 if ($index -notmatch 'id="waitlist-form"') { throw "index.html must contain waitlist form" }
 if ($index -notmatch 'type="email"') { throw "index.html must contain email input" }
 if ($index -notmatch "/api/subscribe") { throw "index.html must submit to /api/subscribe" }
@@ -50,10 +53,15 @@ foreach ($requiredCopy in @("Explore Your Curiosity", "Read More Post", "posts/s
     throw "index.html must contain blog card copy/link: $requiredCopy"
   }
 }
-if (([regex]::Matches($index, 'class="blog-main-link"')).Count -lt 6) {
+foreach ($requiredCopy in @("posts/ai-cannot-publish.html", "assets/blog-ai-cannot-publish-thumb.jpg")) {
+  if ($index -notmatch [regex]::Escape($requiredCopy)) {
+    throw "index.html must contain new AI article card: $requiredCopy"
+  }
+}
+if (([regex]::Matches($index, 'class="blog-main-link"')).Count -lt 7) {
   throw "index.html must make each blog image/title/abstract clickable"
 }
-if (([regex]::Matches($index, 'class="read-more"')).Count -lt 6) {
+if (([regex]::Matches($index, 'class="read-more"')).Count -lt 7) {
   throw "index.html must keep each Read More Post link"
 }
 foreach ($requiredCopy in @("A B O U T&nbsp;&nbsp; M E", "Who Is Ra1ndr0op?", "Hey,", "Ra1ndr0op.", "portrait-orb", "social-icons")) {
@@ -69,6 +77,7 @@ if ($styles -notmatch "resource-grid") { throw "styles.css must style resource c
 if ($styles -notmatch "card-visual") { throw "styles.css must style visual cards" }
 if ($styles -notmatch "blog-grid") { throw "styles.css must style blog cards" }
 if ($styles -notmatch "letter-page") { throw "styles.css must style post letter pages" }
+if ($styles -notmatch "letter-figure") { throw "styles.css must style letter figures" }
 if ($styles -notmatch "who-layout") { throw "styles.css must style who section" }
 if ($styles -notmatch "portrait-orb") { throw "styles.css must style portrait block" }
 if ($styles -notmatch "color-scheme: dark") { throw "styles.css must use the dark creator style" }
@@ -93,12 +102,19 @@ foreach ($scriptName in @("dev", "db:init:local", "db:init:remote", "verify")) {
 $cname = (Get-Content -Raw -Encoding UTF8 (Join-Path $root "CNAME")).Trim()
 if ($cname -ne "www.raindropcn.com") { throw "CNAME must equal www.raindropcn.com" }
 
-foreach ($postName in @("shipping-fast.html", "ai-native-builder.html", "point-of-view.html")) {
+foreach ($postName in @("shipping-fast.html", "ai-native-builder.html", "point-of-view.html", "ai-cannot-publish.html")) {
   $post = Get-Content -Raw -Encoding UTF8 (Join-Path $root "posts\$postName")
   foreach ($requiredCopy in @("letter-page", "letter-subscribe", "letter-article", "letter-meta", "Not A Subscriber?", "Read The Ra1ndr0op Notes")) {
     if ($post -notmatch [regex]::Escape($requiredCopy)) {
       throw "post page $postName must contain letter structure: $requiredCopy"
     }
+  }
+}
+
+$aiPost = Get-Content -Raw -Encoding UTF8 (Join-Path $root "posts\ai-cannot-publish.html")
+foreach ($requiredCopy in @("assets/ai-judgment-framework.jpg", "letter-figure")) {
+  if ($aiPost -notmatch [regex]::Escape($requiredCopy)) {
+    throw "AI article page must contain: $requiredCopy"
   }
 }
 
