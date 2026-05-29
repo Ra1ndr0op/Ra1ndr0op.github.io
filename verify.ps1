@@ -61,7 +61,7 @@ if ($styles -notmatch "subscribe-form") { throw "styles.css must style the subsc
 if ($styles -notmatch "resource-grid") { throw "styles.css must style resource cards" }
 if ($styles -notmatch "card-visual") { throw "styles.css must style visual cards" }
 if ($styles -notmatch "blog-grid") { throw "styles.css must style blog cards" }
-if ($styles -notmatch "post-page") { throw "styles.css must style post pages" }
+if ($styles -notmatch "letter-page") { throw "styles.css must style post letter pages" }
 if ($styles -notmatch "who-layout") { throw "styles.css must style who section" }
 if ($styles -notmatch "portrait-orb") { throw "styles.css must style portrait block" }
 if ($styles -notmatch "color-scheme: dark") { throw "styles.css must use the dark creator style" }
@@ -85,5 +85,14 @@ foreach ($scriptName in @("dev", "db:init:local", "db:init:remote", "verify")) {
 
 $cname = (Get-Content -Raw -Encoding UTF8 (Join-Path $root "CNAME")).Trim()
 if ($cname -ne "www.raindropcn.com") { throw "CNAME must equal www.raindropcn.com" }
+
+foreach ($postName in @("shipping-fast.html", "ai-native-builder.html", "point-of-view.html")) {
+  $post = Get-Content -Raw -Encoding UTF8 (Join-Path $root "posts\$postName")
+  foreach ($requiredCopy in @("letter-page", "letter-subscribe", "letter-article", "letter-meta", "Not A Subscriber?", "Read The Ra1ndr0op Notes")) {
+    if ($post -notmatch [regex]::Escape($requiredCopy)) {
+      throw "post page $postName must contain letter structure: $requiredCopy"
+    }
+  }
+}
 
 Write-Host "Verification passed"

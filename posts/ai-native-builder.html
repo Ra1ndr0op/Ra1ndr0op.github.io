@@ -4,28 +4,55 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AI Native Builder - A Map To Reach The First 1% | Ra1ndr0op</title>
-    <link rel="stylesheet" href="../styles.css" />
+    <link rel="stylesheet" href="../styles.css?v=letter-20260529" />
   </head>
   <body>
-    <header class="site-header">
+    <header class="site-header letter-header">
       <a class="mark" href="../index.html#top" aria-label="Ra1ndr0op 首页">R1</a>
-      <a class="top-link" href="../index.html#writing">Back To Blog</a>
+      <a class="top-link" href="../index.html#subscribe">Read The Ra1ndr0op Notes</a>
     </header>
 
-    <main class="post-page">
-      <p class="spaced-label">B U I L D&nbsp;&nbsp; N O T E</p>
-      <h1>AI Native Builder - A Map To Reach The First 1%</h1>
-      <p class="post-meta-large">Ra1ndr0op ・ May 29, 2026</p>
-      <img src="../assets/blog-map.svg" alt="圆形地图风格的黑白文章封面" />
+    <main class="letter-page">
+      <section class="letter-subscribe" aria-labelledby="subscribe-title">
+        <h2 id="subscribe-title">Not A Subscriber?</h2>
+        <p>Join the build notes about AI workflows, one-person products, and shipping ideas before they get heavy.</p>
+        <a href="../index.html#subscribe">↗ Receive 2 build notes a week</a>
+      </section>
 
-      <article class="post-body">
-        <p>AI Native Builder 不是“把所有事情交给 AI”，而是把 AI 放进一条可验证的工作流。</p>
-        <p>我希望每一次改站都能形成闭环：提出目标，写成计划，读仓库，改文件，跑验证，看浏览器，推 GitHub，等 Cloudflare 部署。</p>
-        <p>这条路线的价值不是炫技，而是减少摩擦。很多想法死在环境、配置、部署和犹豫里，AI 可以帮我把这些步骤压短。</p>
-        <p>接下来我会继续把这些流程沉淀成模板，让每个新想法都能更快拥有一个真实页面。</p>
+      <article class="letter-article">
+        <div class="letter-meta">
+          <time datetime="2026-05-29">May 29, 2026</time>
+          <span>Ra1ndr0op</span>
+        </div>
+        <h1>AI Native Builder - A Map To Reach The First 1%</h1>
+        <p class="letter-deck">AI 原生不是把所有事交给 AI，而是把 AI 放进一个能持续产出真实结果的工作流。</p>
+
+        <div class="letter-body">
+          <p>我对 AI coding 的兴趣不在炫技，而在减少想法到上线之间的摩擦。一个人能做的东西突然变多了，但前提是流程不能散。</p>
+          <p>如果每次都从零解释背景、找文件、修样式、测接口、推部署，那 AI 只是一个更快的打字员。真正的价值是让它进入一个可复用的系统。</p>
+
+          <h2>Start with the outcome</h2>
+          <p>我会先描述想要的页面状态，而不是先讨论技术栈。比如：博客区要像独立创作者的主页，文章页要像一封 letter，订阅入口要明显，手机不能溢出。</p>
+          <p>结果越清晰，AI 越容易帮你做对。模糊的 prompt 会制造模糊的产品，清晰的验收标准会把模型变成协作者。</p>
+
+          <h2>Then compress the loop</h2>
+          <p>我的基本循环是：提出方向，读现有代码，改 HTML/CSS，启动本地服务，截图，检查 API，提交，推送，线上回归。</p>
+          <p>这套流程听起来普通，但它把很多“我晚点再弄”的阻力压缩掉了。你不再需要等待一个完整下午，只需要把下一步变得足够小。</p>
+
+          <h2>Keep the stack boring</h2>
+          <p>静态 HTML、CSS、Cloudflare Pages、Functions、D1，已经足够撑起早期验证。复杂框架当然有价值，但不要让它们成为开始的门槛。</p>
+          <p>AI Native Builder 的核心不是拥有最多工具，而是知道什么时候不用工具。</p>
+
+          <h2>Make the site a living system</h2>
+          <p>这个网站会慢慢从一个页面长成内容、资源、文章、订阅和产品实验的集合。每次改版都留下一个更清楚的模块，下一次就少一点重复劳动。</p>
+          <p>这就是我想练习的能力：用 AI 把想法压成可访问的作品，再用真实反馈决定下一步。</p>
+        </div>
+
+        <footer class="letter-footer">
+          <p>Written in the Ra1ndr0op lab. Replace this draft with your real story when the signal gets clear.</p>
+          <a href="../index.html#writing">↗ Read more posts</a>
+        </footer>
       </article>
-
-      <a class="post-back" href="../index.html#writing">← Back To All Posts</a>
     </main>
   </body>
 </html>
