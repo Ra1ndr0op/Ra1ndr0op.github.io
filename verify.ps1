@@ -29,6 +29,7 @@ foreach ($relativePath in $requiredFiles) {
 
 $index = Get-Content -Raw -Encoding UTF8 (Join-Path $root "index.html")
 if ($index -notmatch "Ra1ndr0op") { throw "index.html must contain site title" }
+if ($index -notmatch "styles.css\?v=blog-links-20260529") { throw "index.html must load the current cache-busted stylesheet" }
 if ($index -notmatch 'id="waitlist-form"') { throw "index.html must contain waitlist form" }
 if ($index -notmatch 'type="email"') { throw "index.html must contain email input" }
 if ($index -notmatch "/api/subscribe") { throw "index.html must submit to /api/subscribe" }
