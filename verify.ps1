@@ -8,6 +8,7 @@ $requiredFiles = @(
   "assets\\.gitkeep",
   "assets\\creator-workspace.webp",
   "functions\\api\\subscribe.ts",
+  "functions\\api\\download-skill.ts",
   "schema.sql",
   "package.json",
   "scripts\\init-local-d1.ps1",
@@ -59,7 +60,7 @@ foreach ($requiredCopy in @("stardew-valley-poster", "minecraft-voxel-poster", "
     throw "index.html must contain poster project card/link: $requiredCopy"
   }
 }
-foreach ($requiredCopy in @("downloads/skills/stardew-valley-poster/SKILL.md", "downloads/skills/minecraft-voxel-poster/SKILL.md", "Download Skill")) {
+foreach ($requiredCopy in @("/api/download-skill?name=stardew-valley-poster", "/api/download-skill?name=minecraft-voxel-poster", "Download Skill")) {
   if ($index -notmatch [regex]::Escape($requiredCopy)) {
     throw "index.html must contain skill download link: $requiredCopy"
   }
@@ -107,6 +108,13 @@ if ($api -notmatch "waitlist_db") { throw "subscribe.ts must use waitlist_db D1 
 if ($api -notmatch "INSERT INTO emails") { throw "subscribe.ts must insert into emails table" }
 if ($api -notmatch "UNIQUE") { throw "subscribe.ts must handle duplicate email errors" }
 
+$downloadApi = Get-Content -Raw -Encoding UTF8 (Join-Path $root "functions\api\download-skill.ts")
+foreach ($requiredCopy in @("Content-Type", "text/markdown; charset=UTF-8", "Content-Disposition", "attachment", '${name}-SKILL.md', "stardew-valley-poster", "minecraft-voxel-poster", "downloads/skills")) {
+  if ($downloadApi -notmatch [regex]::Escape($requiredCopy)) {
+    throw "download-skill.ts must implement backend skill download: $requiredCopy"
+  }
+}
+
 $schema = Get-Content -Raw -Encoding UTF8 (Join-Path $root "schema.sql")
 if ($schema -notmatch "CREATE TABLE IF NOT EXISTS emails") { throw "schema.sql must create emails table" }
 if ($schema -notmatch "email TEXT UNIQUE NOT NULL") { throw "schema.sql must enforce unique emails" }
@@ -140,7 +148,7 @@ foreach ($requiredCopy in @("assets/ai-judgment-framework.jpg", "letter-figure",
 
 foreach ($projectName in @("stardew-valley-poster.html", "minecraft-voxel-poster.html")) {
   $project = Get-Content -Raw -Encoding UTF8 (Join-Path $root "projects\$projectName")
-  foreach ($requiredCopy in @("project-page", "project-summary", "letter-figure", "letter-callout", "letter-list", "download-card", "GitHub Raw", "Back to projects")) {
+  foreach ($requiredCopy in @("project-page", "project-summary", "letter-figure", "letter-callout", "letter-list", "download-card", "/api/download-skill?name=", "GitHub Raw", "Back to projects")) {
     if ($project -notmatch [regex]::Escape($requiredCopy)) {
       throw "project page $projectName must contain: $requiredCopy"
     }
