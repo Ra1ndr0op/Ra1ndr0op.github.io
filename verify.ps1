@@ -24,7 +24,9 @@ $requiredFiles = @(
   "assets\\blog-ai-cannot-publish-thumb.jpg",
   "assets\\ai-judgment-framework.jpg",
   "assets\\project-stardew-valley-poster.jpg",
-  "assets\\project-minecraft-voxel-poster.jpg"
+  "assets\\project-minecraft-voxel-poster.jpg",
+  "downloads\\skills\\stardew-valley-poster\\SKILL.md",
+  "downloads\\skills\\minecraft-voxel-poster\\SKILL.md"
 )
 
 foreach ($relativePath in $requiredFiles) {
@@ -55,6 +57,11 @@ foreach ($requiredCopy in @("Cloudflare", "Codex", "AI Native Builder", "Build W
 foreach ($requiredCopy in @("stardew-valley-poster", "minecraft-voxel-poster", "assets/project-stardew-valley-poster.jpg", "assets/project-minecraft-voxel-poster.jpg", "projects/stardew-valley-poster.html", "projects/minecraft-voxel-poster.html")) {
   if ($index -notmatch [regex]::Escape($requiredCopy)) {
     throw "index.html must contain poster project card/link: $requiredCopy"
+  }
+}
+foreach ($requiredCopy in @("downloads/skills/stardew-valley-poster/SKILL.md", "downloads/skills/minecraft-voxel-poster/SKILL.md", "Download Skill")) {
+  if ($index -notmatch [regex]::Escape($requiredCopy)) {
+    throw "index.html must contain skill download link: $requiredCopy"
   }
 }
 foreach ($requiredCopy in @("Explore Your Curiosity", "Read More Post", "posts/shipping-fast.html", "posts/ai-native-builder.html", "posts/point-of-view.html")) {
@@ -90,6 +97,7 @@ if ($styles -notmatch "letter-figure") { throw "styles.css must style letter fig
 if ($styles -notmatch "letter-callout") { throw "styles.css must style article callouts" }
 if ($styles -notmatch "project-summary") { throw "styles.css must style project pages" }
 if ($styles -notmatch "resource-main-link") { throw "styles.css must style clickable resource cards" }
+if ($styles -notmatch "download-card") { throw "styles.css must style skill download cards" }
 if ($styles -notmatch "who-layout") { throw "styles.css must style who section" }
 if ($styles -notmatch "portrait-orb") { throw "styles.css must style portrait block" }
 if ($styles -notmatch "color-scheme: dark") { throw "styles.css must use the dark creator style" }
@@ -132,11 +140,16 @@ foreach ($requiredCopy in @("assets/ai-judgment-framework.jpg", "letter-figure",
 
 foreach ($projectName in @("stardew-valley-poster.html", "minecraft-voxel-poster.html")) {
   $project = Get-Content -Raw -Encoding UTF8 (Join-Path $root "projects\$projectName")
-  foreach ($requiredCopy in @("project-page", "project-summary", "letter-figure", "letter-callout", "letter-list", "Back to projects")) {
+  foreach ($requiredCopy in @("project-page", "project-summary", "letter-figure", "letter-callout", "letter-list", "download-card", "GitHub Raw", "Back to projects")) {
     if ($project -notmatch [regex]::Escape($requiredCopy)) {
       throw "project page $projectName must contain: $requiredCopy"
     }
   }
 }
+
+$stardewSkill = Get-Content -Raw -Encoding UTF8 (Join-Path $root "downloads\skills\stardew-valley-poster\SKILL.md")
+if ($stardewSkill -notmatch "Stardew Valley Poster") { throw "stardew skill download must contain skill body" }
+$voxelSkill = Get-Content -Raw -Encoding UTF8 (Join-Path $root "downloads\skills\minecraft-voxel-poster\SKILL.md")
+if ($voxelSkill -notmatch "Minecraft Voxel Poster") { throw "minecraft skill download must contain skill body" }
 
 Write-Host "Verification passed"
