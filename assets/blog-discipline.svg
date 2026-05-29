@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="500" viewBox="0 0 960 500" role="img" aria-labelledby="title">
+  <title id="title">Discipline hand sketch</title>
+  <rect width="960" height="500" fill="#f4f4f1"/>
+  <g fill="none" stroke="#111" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M310 116c67-44 130-42 188-2 34 23 71 24 115 14 22-5 38 8 30 25-10 21-63 34-113 25-42-7-79-10-112 11-38 24-85 35-137 23" stroke-width="10"/>
+    <path d="M393 190c18 38 13 79-15 121" stroke-width="5"/>
+    <path d="M432 197c26 34 31 75 14 123" stroke-width="5"/>
+    <path d="M488 194c17 45 13 88-14 128" stroke-width="5"/>
+    <path d="M385 310c-55 18-88 56-100 113M472 322c56 22 90 58 104 109" stroke-width="5"/>
+    <path d="M326 386h184M346 426h210" stroke-width="4" opacity=".45"/>
+    <path d="M397 230c20 26 51 27 82 2" stroke-width="4"/>
+  </g>
+</svg>

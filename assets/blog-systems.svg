@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="500" viewBox="0 0 960 500" role="img" aria-labelledby="title">
+  <title id="title">System map diagram</title>
+  <rect width="960" height="500" fill="#f4f4f1"/>
+  <g transform="translate(480 250)" fill="none" stroke-linecap="round">
+    <circle r="160" stroke="#19f25f" stroke-width="20" opacity=".8"/>
+    <circle r="120" stroke="#53c4ff" stroke-width="18" opacity=".75"/>
+    <circle r="82" stroke="#8d6bff" stroke-width="16" opacity=".65"/>
+    <circle r="45" stroke="#ff6464" stroke-width="14" opacity=".75"/>
+    <path d="M-170 0H170M0-170V170M-120-120L120 120M120-120L-120 120" stroke="#111" stroke-width="2" opacity=".26"/>
+    <circle r="10" fill="#111" stroke="#111"/>
+  </g>
+  <g fill="#111" font-family="Arial, sans-serif" font-size="24" font-weight="800">
+    <text x="70" y="62">Mind</text>
+    <text x="760" y="62">Body</text>
+    <text x="70" y="445">Signal</text>
+    <text x="724" y="445">Systems</text>
+    <text x="392" y="66" fill="#ff50c8">SHIPPING 1.0</text>
+  </g>
+  <g fill="#111" font-family="Arial, sans-serif" font-size="14" opacity=".72">
+    <text x="70" y="88">Prompt / page / data</text>
+    <text x="760" y="88">Energy / focus / output</text>
+    <text x="70" y="470">Launch before certainty</text>
+    <text x="724" y="470">Repeatable checks</text>
+  </g>
+</svg>

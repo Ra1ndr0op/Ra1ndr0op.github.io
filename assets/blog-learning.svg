@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="500" viewBox="0 0 960 500" role="img" aria-labelledby="title">
+  <title id="title">Learning through waves</title>
+  <rect width="960" height="500" fill="#f4f4f1"/>
+  <g fill="none" stroke="#111" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M70 345c84-80 162-80 235 0s151 79 235 0 162-80 350 0" stroke-width="12"/>
+    <path d="M70 392c84-54 162-54 235 0s151 54 235 0 162-54 350 0" stroke-width="5" opacity=".55"/>
+    <path d="M512 246c60-32 117-15 168 48-57 32-111 31-164-2" stroke-width="7"/>
+    <path d="M590 235l-42-94M556 146c-9-26 2-46 29-59 25 17 31 39 17 64" stroke-width="7"/>
+    <path d="M633 216l129-66" stroke-width="7"/>
+    <path d="M757 151l-42 102" stroke-width="5"/>
+    <path d="M622 295c-38 23-76 23-113 0" stroke-width="5"/>
+  </g>
+</svg>

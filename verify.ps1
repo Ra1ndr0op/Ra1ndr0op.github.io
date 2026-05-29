@@ -11,7 +11,13 @@ $requiredFiles = @(
   "schema.sql",
   "package.json",
   "scripts\\init-local-d1.ps1",
-  "scripts\\init-remote-d1.ps1"
+  "scripts\\init-remote-d1.ps1",
+  "posts\\shipping-fast.html",
+  "posts\\ai-native-builder.html",
+  "posts\\point-of-view.html",
+  "assets\\blog-systems.svg",
+  "assets\\blog-map.svg",
+  "assets\\blog-point-of-view.svg"
 )
 
 foreach ($relativePath in $requiredFiles) {
@@ -38,12 +44,19 @@ foreach ($requiredCopy in @("Cloudflare", "Codex", "AI Native Builder", "Build W
     throw "index.html must contain richer personal site copy: $requiredCopy"
   }
 }
+foreach ($requiredCopy in @("Explore Your Curiosity", "Read More Post", "posts/shipping-fast.html", "posts/ai-native-builder.html", "posts/point-of-view.html")) {
+  if ($index -notmatch [regex]::Escape($requiredCopy)) {
+    throw "index.html must contain blog card copy/link: $requiredCopy"
+  }
+}
 
 $styles = Get-Content -Raw -Encoding UTF8 (Join-Path $root "styles.css")
 if ($styles -notmatch ":root") { throw "styles.css must define root variables" }
 if ($styles -notmatch "subscribe-form") { throw "styles.css must style the subscribe form" }
 if ($styles -notmatch "resource-grid") { throw "styles.css must style resource cards" }
 if ($styles -notmatch "card-visual") { throw "styles.css must style visual cards" }
+if ($styles -notmatch "blog-grid") { throw "styles.css must style blog cards" }
+if ($styles -notmatch "post-page") { throw "styles.css must style post pages" }
 if ($styles -notmatch "color-scheme: dark") { throw "styles.css must use the dark creator style" }
 
 $api = Get-Content -Raw -Encoding UTF8 (Join-Path $root "functions\api\subscribe.ts")

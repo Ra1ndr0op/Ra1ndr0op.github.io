@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="500" viewBox="0 0 960 500" role="img" aria-labelledby="title">
+  <title id="title">Point of view lens</title>
+  <rect width="960" height="500" fill="#f4f4f1"/>
+  <g transform="translate(480 245)">
+    <circle r="148" fill="none" stroke="#111" stroke-width="12"/>
+    <circle r="113" fill="none" stroke="#111" stroke-width="2" opacity=".55"/>
+    <circle r="72" fill="#fff" stroke="#111" stroke-width="3"/>
+    <path d="M-35 40C-10 5 20 8 44-32C23-18 1-21-11-54C-22-20-53-10-80-19C-56-1-55 26-35 40Z" fill="#111"/>
+    <path d="M-225 148C-130 82 145 88 230 150" fill="none" stroke="#111" stroke-width="4"/>
+    <path d="M-245 164C-125 106 126 111 254 166" fill="none" stroke="#111" stroke-width="2" opacity=".45"/>
+    <g fill="none" stroke="#111" opacity=".35">
+      <path d="M-185 110l-70 48M185 112l70 48M-120 138l-24 54M120 138l24 54"/>
+    </g>
+  </g>
+</svg>
