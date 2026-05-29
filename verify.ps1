@@ -32,7 +32,7 @@ if ($index -notmatch "Ra1ndr0op") { throw "index.html must contain site title" }
 if ($index -notmatch 'id="waitlist-form"') { throw "index.html must contain waitlist form" }
 if ($index -notmatch 'type="email"') { throw "index.html must contain email input" }
 if ($index -notmatch "/api/subscribe") { throw "index.html must submit to /api/subscribe" }
-foreach ($requiredCopy in @("Resources", "Writing", "Now", "About", "Subscribe")) {
+foreach ($requiredCopy in @("Resources", "Writing", "Who Is Ra1ndr0op?", "Subscribe")) {
   if ($index -notmatch $requiredCopy) {
     throw "index.html must contain personal site section: $requiredCopy"
   }
@@ -49,6 +49,11 @@ foreach ($requiredCopy in @("Explore Your Curiosity", "Read More Post", "posts/s
     throw "index.html must contain blog card copy/link: $requiredCopy"
   }
 }
+foreach ($requiredCopy in @("A B O U T&nbsp;&nbsp; M E", "Who Is Ra1ndr0op?", "Hey,", "Ra1ndr0op.", "portrait-orb", "social-icons")) {
+  if ($index -notmatch [regex]::Escape($requiredCopy)) {
+    throw "index.html must contain who section copy/structure: $requiredCopy"
+  }
+}
 
 $styles = Get-Content -Raw -Encoding UTF8 (Join-Path $root "styles.css")
 if ($styles -notmatch ":root") { throw "styles.css must define root variables" }
@@ -57,6 +62,8 @@ if ($styles -notmatch "resource-grid") { throw "styles.css must style resource c
 if ($styles -notmatch "card-visual") { throw "styles.css must style visual cards" }
 if ($styles -notmatch "blog-grid") { throw "styles.css must style blog cards" }
 if ($styles -notmatch "post-page") { throw "styles.css must style post pages" }
+if ($styles -notmatch "who-layout") { throw "styles.css must style who section" }
+if ($styles -notmatch "portrait-orb") { throw "styles.css must style portrait block" }
 if ($styles -notmatch "color-scheme: dark") { throw "styles.css must use the dark creator style" }
 
 $api = Get-Content -Raw -Encoding UTF8 (Join-Path $root "functions\api\subscribe.ts")

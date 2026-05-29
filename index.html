@@ -8,7 +8,7 @@
       name="description"
       content="Ra1ndr0op 的个人主页：记录 AI 协作、独立产品、Cloudflare 部署和快速验证想法的过程。"
     />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css?v=who-20260529" />
   </head>
   <body>
     <header class="site-header">
@@ -66,7 +66,7 @@
             </div>
             <h3>One Person Systems - 一人公司笔记</h3>
             <p>不先堆复杂架构，先构建能收集信号、积累内容、沉淀信任的小系统。</p>
-            <a href="#now">↗ See Experiments</a>
+            <a href="#now">↗ Who Is Ra1ndr0op</a>
           </article>
 
           <article class="resource-card">
@@ -135,39 +135,44 @@
         </div>
       </section>
 
-      <section class="section about-section" id="about" aria-labelledby="about-title">
-        <p class="spaced-label">A B O U T</p>
-        <h2 id="about-title">A public lab for one-person products.</h2>
-        <div class="about-copy">
-          <p>
-            Ra1ndr0op 是我的公开实验室。我会在这里整理 AI 原生工作流、低成本部署、独立产品验证，
-            以及一个人如何把模糊想法变成可以被访问、被提交、被反馈的真实页面。
-          </p>
-          <p>
-            现在内容还在生长，但方向很明确：少做重型架构，多做可验证的东西；少一点“等准备好”，多一点今天就上线。
-          </p>
-        </div>
-      </section>
+      <section class="section who-section" id="now" aria-labelledby="who-title">
+        <p class="spaced-label">A B O U T&nbsp;&nbsp; M E</p>
+        <h2 id="who-title">Who Is Ra1ndr0op?</h2>
+        <p class="who-subtitle">Just a builder obsessed with shipping ideas.</p>
 
-      <section class="section now-section" id="now" aria-labelledby="now-title">
-        <p class="spaced-label">N O W</p>
-        <h2 id="now-title">Current Experiments</h2>
-        <div class="now-grid">
-          <article>
-            <span>01</span>
-            <strong>Personal homepage</strong>
-            <p>把 raindropcn.com 从等待列表升级成创作者主页。</p>
-          </article>
-          <article>
-            <span>02</span>
-            <strong>Cloudflare backend</strong>
-            <p>继续使用 Pages Functions + D1 收集订阅邮箱。</p>
-          </article>
-          <article>
-            <span>03</span>
-            <strong>AI coding workflow</strong>
-            <p>让 Codex 参与改版、验证、部署和线上回归。</p>
-          </article>
+        <div class="who-layout">
+          <div class="who-media">
+            <div class="portrait-orb" aria-hidden="true">
+              <div class="portrait-face">
+                <span class="portrait-eye"></span>
+                <span class="portrait-eye"></span>
+                <span class="portrait-nose"></span>
+                <span class="portrait-mouth"></span>
+              </div>
+            </div>
+            <div class="social-icons" aria-label="社交链接">
+              <a href="https://github.com/Ra1ndr0op" target="_blank" rel="noreferrer">GH</a>
+              <a href="mailto:hello@example.com">✉</a>
+              <a href="#writing">BLOG</a>
+              <a href="#subscribe">IN</a>
+            </div>
+          </div>
+
+          <div class="who-copy">
+            <h3>Hey, I’m Ra1ndr0op.</h3>
+            <p>
+              I’m building a public lab for AI-native workflows, one-person products, and fast validation.
+              This site is where I turn vague ideas into pages people can visit, submit to, and react to.
+            </p>
+            <p>
+              Previously, I would let ideas get stuck in tooling, servers, DNS, and “I’ll do it later.”
+              Now I use Codex, Cloudflare Pages, Functions, and D1 to ship smaller experiments faster.
+            </p>
+            <p>
+              For those wondering, I’m still shaping the real story and offers here. For now, follow the notes,
+              read the posts, and watch the experiments become useful systems.
+            </p>
+          </div>
         </div>
       </section>
     </main>
