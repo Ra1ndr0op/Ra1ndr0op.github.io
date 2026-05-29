@@ -13,15 +13,12 @@ $requiredFiles = @(
   "package.json",
   "scripts\\init-local-d1.ps1",
   "scripts\\init-remote-d1.ps1",
-  "posts\\shipping-fast.html",
   "posts\\ai-native-builder.html",
-  "posts\\point-of-view.html",
   "posts\\ai-cannot-publish.html",
   "projects\\stardew-valley-poster.html",
   "projects\\minecraft-voxel-poster.html",
   "assets\\blog-systems.svg",
   "assets\\blog-map.svg",
-  "assets\\blog-point-of-view.svg",
   "assets\\blog-ai-cannot-publish-thumb.jpg",
   "assets\\ai-judgment-framework.jpg",
   "assets\\project-stardew-valley-poster.jpg",
@@ -65,7 +62,7 @@ foreach ($requiredCopy in @("/api/download-skill?name=stardew-valley-poster", "/
     throw "index.html must contain skill download link: $requiredCopy"
   }
 }
-foreach ($requiredCopy in @("Explore Your Curiosity", "Read More Post", "posts/shipping-fast.html", "posts/ai-native-builder.html", "posts/point-of-view.html")) {
+foreach ($requiredCopy in @("Explore Your Curiosity", "Read More Post", "posts/ai-native-builder.html", "posts/ai-cannot-publish.html")) {
   if ($index -notmatch [regex]::Escape($requiredCopy)) {
     throw "index.html must contain blog card copy/link: $requiredCopy"
   }
@@ -75,10 +72,10 @@ foreach ($requiredCopy in @("posts/ai-cannot-publish.html", "assets/blog-ai-cann
     throw "index.html must contain new AI article card: $requiredCopy"
   }
 }
-if (([regex]::Matches($index, 'class="blog-main-link"')).Count -lt 7) {
+if (([regex]::Matches($index, 'class="blog-main-link"')).Count -lt 3) {
   throw "index.html must make each blog image/title/abstract clickable"
 }
-if (([regex]::Matches($index, 'class="read-more"')).Count -lt 7) {
+if (([regex]::Matches($index, 'class="read-more"')).Count -lt 3) {
   throw "index.html must keep each Read More Post link"
 }
 foreach ($requiredCopy in @("A B O U T&nbsp;&nbsp; M E", "Who Is Ra1ndr0op?", "Hey,", "Ra1ndr0op.", "portrait-orb", "social-icons")) {
@@ -130,7 +127,7 @@ foreach ($scriptName in @("dev", "db:init:local", "db:init:remote", "verify")) {
 $cname = (Get-Content -Raw -Encoding UTF8 (Join-Path $root "CNAME")).Trim()
 if ($cname -ne "www.raindropcn.com") { throw "CNAME must equal www.raindropcn.com" }
 
-foreach ($postName in @("shipping-fast.html", "ai-native-builder.html", "point-of-view.html", "ai-cannot-publish.html")) {
+foreach ($postName in @("ai-native-builder.html", "ai-cannot-publish.html")) {
   $post = Get-Content -Raw -Encoding UTF8 (Join-Path $root "posts\$postName")
   foreach ($requiredCopy in @("letter-page", "letter-subscribe", "letter-article", "letter-meta", "Not A Subscriber?", "Read The Ra1ndr0op Notes")) {
     if ($post -notmatch [regex]::Escape($requiredCopy)) {
