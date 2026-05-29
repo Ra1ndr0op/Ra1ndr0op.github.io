@@ -302,6 +302,17 @@ h3 {
   min-width: 0;
 }
 
+.blog-main-link {
+  display: block;
+}
+
+.blog-main-link:hover h3,
+.blog-main-link:focus-visible h3 {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+
 .blog-card img {
   width: 100%;
   aspect-ratio: 1.92 / 1;
@@ -326,7 +337,7 @@ h3 {
   line-height: 1.32;
 }
 
-.blog-card a {
+.blog-card .read-more {
   display: inline-flex;
   margin-bottom: 18px;
   color: var(--ink);

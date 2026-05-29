@@ -49,6 +49,12 @@ foreach ($requiredCopy in @("Explore Your Curiosity", "Read More Post", "posts/s
     throw "index.html must contain blog card copy/link: $requiredCopy"
   }
 }
+if (([regex]::Matches($index, 'class="blog-main-link"')).Count -lt 6) {
+  throw "index.html must make each blog image/title/abstract clickable"
+}
+if (([regex]::Matches($index, 'class="read-more"')).Count -lt 6) {
+  throw "index.html must keep each Read More Post link"
+}
 foreach ($requiredCopy in @("A B O U T&nbsp;&nbsp; M E", "Who Is Ra1ndr0op?", "Hey,", "Ra1ndr0op.", "portrait-orb", "social-icons")) {
   if ($index -notmatch [regex]::Escape($requiredCopy)) {
     throw "index.html must contain who section copy/structure: $requiredCopy"
