@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 625" role="img" aria-labelledby="title desc">
+  <title id="title">从聊天到工件的 AI 工作流</title>
+  <desc id="desc">把想法、标准、AI 协作、工件和迭代连接起来的内容框架图。</desc>
+  <rect width="1200" height="625" fill="#f4f1e8"/>
+  <rect x="36" y="36" width="1128" height="553" fill="#050505"/>
+  <text x="600" y="92" fill="#f8f8f2" font-family="Arial, 'Microsoft YaHei', sans-serif" font-size="40" font-weight="900" text-anchor="middle">AI 不是陪你聊天，是把东西做出来</text>
+  <text x="600" y="128" fill="#d6d6cf" font-family="Arial, 'Microsoft YaHei', sans-serif" font-size="18" font-weight="700" text-anchor="middle">从一段顺滑回答，变成一个能打开、能修改、能保存、能迭代的工件</text>
+
+  <g font-family="Arial, 'Microsoft YaHei', sans-serif">
+    <g transform="translate(74 190)">
+      <rect width="184" height="188" fill="#111" stroke="#f8f8f2" stroke-width="2"/>
+      <text x="24" y="45" fill="#e8ff4d" font-size="16" font-weight="900" letter-spacing="3">01 INPUT</text>
+      <text x="24" y="88" fill="#f8f8f2" font-size="28" font-weight="900">倒出原料</text>
+      <text x="24" y="126" fill="#d6d6cf" font-size="17" font-weight="700">想法、困惑、素材</text>
+      <text x="24" y="154" fill="#d6d6cf" font-size="17" font-weight="700">先不要急着包装</text>
+    </g>
+
+    <g transform="translate(300 190)">
+      <rect width="184" height="188" fill="#111" stroke="#f8f8f2" stroke-width="2"/>
+      <text x="24" y="45" fill="#e8ff4d" font-size="16" font-weight="900" letter-spacing="3">02 STANDARD</text>
+      <text x="24" y="88" fill="#f8f8f2" font-size="28" font-weight="900">定义标准</text>
+      <text x="24" y="126" fill="#d6d6cf" font-size="17" font-weight="700">什么算完成</text>
+      <text x="24" y="154" fill="#d6d6cf" font-size="17" font-weight="700">什么算能用</text>
+    </g>
+
+    <g transform="translate(526 190)">
+      <rect width="184" height="188" fill="#111" stroke="#f8f8f2" stroke-width="2"/>
+      <text x="24" y="45" fill="#e8ff4d" font-size="16" font-weight="900" letter-spacing="3">03 BUILD</text>
+      <text x="24" y="88" fill="#f8f8f2" font-size="28" font-weight="900">让 AI 做</text>
+      <text x="24" y="126" fill="#d6d6cf" font-size="17" font-weight="700">文件、页面、脚本</text>
+      <text x="24" y="154" fill="#d6d6cf" font-size="17" font-weight="700">规范、skill、小工具</text>
+    </g>
+
+    <g transform="translate(752 190)">
+      <rect width="184" height="188" fill="#111" stroke="#f8f8f2" stroke-width="2"/>
+      <text x="24" y="45" fill="#e8ff4d" font-size="16" font-weight="900" letter-spacing="3">04 ARTIFACT</text>
+      <text x="24" y="88" fill="#f8f8f2" font-size="28" font-weight="900">留下工件</text>
+      <text x="24" y="126" fill="#d6d6cf" font-size="17" font-weight="700">能打开、能保存</text>
+      <text x="24" y="154" fill="#d6d6cf" font-size="17" font-weight="700">能报错、能复用</text>
+    </g>
+
+    <g transform="translate(978 190)">
+      <rect width="148" height="188" fill="#111" stroke="#f8f8f2" stroke-width="2"/>
+      <text x="22" y="45" fill="#e8ff4d" font-size="16" font-weight="900" letter-spacing="3">05 LOOP</text>
+      <text x="22" y="88" fill="#f8f8f2" font-size="28" font-weight="900">迭代</text>
+      <text x="22" y="126" fill="#d6d6cf" font-size="17" font-weight="700">修改、验证</text>
+      <text x="22" y="154" fill="#d6d6cf" font-size="17" font-weight="700">下次继续用</text>
+    </g>
+
+    <g fill="none" stroke="#e8ff4d" stroke-width="4" stroke-linecap="round">
+      <path d="M270 284h18"/>
+      <path d="M496 284h18"/>
+      <path d="M722 284h18"/>
+      <path d="M948 284h18"/>
+    </g>
+
+    <g transform="translate(112 442)">
+      <rect width="976" height="88" fill="#f8f8f2"/>
+      <text x="32" y="37" fill="#050505" font-size="24" font-weight="900">笨规则：</text>
+      <text x="150" y="37" fill="#050505" font-size="24" font-weight="900">这次对话结束以后，我能不能留下一个东西？</text>
+      <text x="32" y="67" fill="#050505" font-size="17" font-weight="700">一篇能继续改的文章、一个 HTML、一份规范、一个 skill、一个可以测试的小工具。</text>
+    </g>
+  </g>
+</svg>
