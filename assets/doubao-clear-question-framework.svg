@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 625" role="img" aria-labelledby="title desc">
+  <title id="title">把问题讲清楚，AI 才接得住</title>
+  <desc id="desc">用目标、背景、冲突、根因和成功标准，把模糊问题整理成 AI 能执行的任务。</desc>
+  <rect width="1200" height="625" fill="#f4f1e8"/>
+  <rect x="36" y="36" width="1128" height="553" fill="#050505"/>
+  <text x="600" y="92" fill="#f8f8f2" font-family="Arial, 'Microsoft YaHei', sans-serif" font-size="40" font-weight="900" text-anchor="middle">把问题讲清楚，工具才开始中用</text>
+  <text x="600" y="128" fill="#d6d6cf" font-family="Arial, 'Microsoft YaHei', sans-serif" font-size="18" font-weight="700" text-anchor="middle">不好用的，可能不是 AI，而是它还没接住真正的问题</text>
+
+  <g font-family="Arial, 'Microsoft YaHei', sans-serif">
+    <g transform="translate(72 184)">
+      <rect width="220" height="226" fill="#111" stroke="#f8f8f2" stroke-width="2"/>
+      <text x="24" y="45" fill="#e8ff4d" font-size="16" font-weight="900" letter-spacing="3">MESSY ASK</text>
+      <text x="24" y="90" fill="#f8f8f2" font-size="30" font-weight="900">模糊提问</text>
+      <text x="24" y="130" fill="#d6d6cf" font-size="18" font-weight="700">帮我写一篇</text>
+      <text x="24" y="160" fill="#d6d6cf" font-size="18" font-weight="700">帮我分析一下</text>
+      <text x="24" y="190" fill="#d6d6cf" font-size="18" font-weight="700">帮我优化表达</text>
+    </g>
+
+    <g transform="translate(346 184)">
+      <rect width="228" height="226" fill="#111" stroke="#f8f8f2" stroke-width="2"/>
+      <text x="24" y="45" fill="#e8ff4d" font-size="16" font-weight="900" letter-spacing="3">CLARIFY</text>
+      <text x="24" y="90" fill="#f8f8f2" font-size="30" font-weight="900">讲清楚</text>
+      <text x="24" y="130" fill="#d6d6cf" font-size="18" font-weight="700">目标 / 背景 / 受众</text>
+      <text x="24" y="160" fill="#d6d6cf" font-size="18" font-weight="700">冲突 / 限制 / 标准</text>
+      <text x="24" y="190" fill="#d6d6cf" font-size="18" font-weight="700">How 之后继续问 Why</text>
+    </g>
+
+    <g transform="translate(628 184)">
+      <rect width="228" height="226" fill="#111" stroke="#f8f8f2" stroke-width="2"/>
+      <text x="24" y="45" fill="#e8ff4d" font-size="16" font-weight="900" letter-spacing="3">BETTER AI</text>
+      <text x="24" y="90" fill="#f8f8f2" font-size="30" font-weight="900">答案变准</text>
+      <text x="24" y="130" fill="#d6d6cf" font-size="18" font-weight="700">不是陪你聊天</text>
+      <text x="24" y="160" fill="#d6d6cf" font-size="18" font-weight="700">而是完成表达任务</text>
+      <text x="24" y="190" fill="#d6d6cf" font-size="18" font-weight="700">能判断行不行</text>
+    </g>
+
+    <g transform="translate(910 184)">
+      <rect width="218" height="226" fill="#111" stroke="#f8f8f2" stroke-width="2"/>
+      <text x="24" y="45" fill="#e8ff4d" font-size="16" font-weight="900" letter-spacing="3">TRUST</text>
+      <text x="24" y="90" fill="#f8f8f2" font-size="30" font-weight="900">形成信任</text>
+      <text x="24" y="130" fill="#d6d6cf" font-size="18" font-weight="700">问题讲清楚</text>
+      <text x="24" y="160" fill="#d6d6cf" font-size="18" font-weight="700">过程讲清楚</text>
+      <text x="24" y="190" fill="#d6d6cf" font-size="18" font-weight="700">结果做出来</text>
+    </g>
+
+    <g fill="none" stroke="#e8ff4d" stroke-width="4" stroke-linecap="round">
+      <path d="M306 297h26"/>
+      <path d="M588 297h26"/>
+      <path d="M870 297h26"/>
+    </g>
+
+    <g transform="translate(100 462)">
+      <rect width="1000" height="74" fill="#f8f8f2"/>
+      <text x="32" y="31" fill="#050505" font-size="22" font-weight="900">笨规则：</text>
+      <text x="132" y="31" fill="#050505" font-size="22" font-weight="900">先问“我希望对方重新理解什么？”再问“我该写什么？”</text>
+      <text x="32" y="58" fill="#050505" font-size="16" font-weight="700">主题必须为目标服务。工具中不中用，有一半取决于你有没有把问题整理到它能接住。</text>
+    </g>
+  </g>
+</svg>

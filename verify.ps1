@@ -27,6 +27,7 @@ $requiredFiles = @(
   "schema.sql",
   "package.json",
   "posts\ai-native-builder.html",
+  "posts\doubao-clear-question.html",
   "posts\ai-build-artifacts.html",
   "posts\ai-cannot-publish.html",
   "projects\stardew-valley-poster.html",
@@ -37,6 +38,8 @@ $requiredFiles = @(
   "assets\ai-judgment-framework.jpg",
   "assets\project-stardew-valley-poster.jpg",
   "assets\project-minecraft-voxel-poster.jpg",
+  "assets\blog-doubao-clear-question-thumb.jpg",
+  "assets\doubao-clear-question-framework.svg",
   "downloads\skills\stardew-valley-poster\SKILL.md",
   "downloads\skills\minecraft-voxel-poster\SKILL.md"
 )
@@ -57,6 +60,8 @@ foreach ($needle in @(
   "minecraft-voxel-poster",
   "/api/download-skill?name=stardew-valley-poster",
   "/api/download-skill?name=minecraft-voxel-poster",
+  "posts/doubao-clear-question.html",
+  "assets/blog-doubao-clear-question-thumb.jpg",
   "posts/ai-build-artifacts.html",
   "assets/blog-ai-artifact-thumb.jpg",
   "posts/ai-cannot-publish.html",
@@ -126,7 +131,7 @@ if ($cname -ne "www.raindropcn.com") {
   throw "CNAME must equal www.raindropcn.com"
 }
 
-foreach ($postName in @("ai-native-builder.html", "ai-build-artifacts.html", "ai-cannot-publish.html")) {
+foreach ($postName in @("ai-native-builder.html", "doubao-clear-question.html", "ai-build-artifacts.html", "ai-cannot-publish.html")) {
   $post = Read-Text "posts\$postName"
   foreach ($needle in @("letter-page", "letter-subscribe", "letter-article", "letter-meta", "Not A Subscriber?", "Read The")) {
     Assert-Contains $post $needle "post page $postName must contain: $needle"
@@ -136,6 +141,11 @@ foreach ($postName in @("ai-native-builder.html", "ai-build-artifacts.html", "ai
 $artifactPost = Read-Text "posts\ai-build-artifacts.html"
 foreach ($needle in @("assets/ai-artifact-framework.svg", "letter-figure", "letter-callout", "letter-list")) {
   Assert-Contains $artifactPost $needle "artifact article must contain: $needle"
+}
+
+$doubaoPost = Read-Text "posts\doubao-clear-question.html"
+foreach ($needle in @("assets/doubao-clear-question-framework.svg", "letter-figure", "letter-callout", "letter-list")) {
+  Assert-Contains $doubaoPost $needle "doubao article must contain: $needle"
 }
 
 $oldAiPost = Read-Text "posts\ai-cannot-publish.html"
