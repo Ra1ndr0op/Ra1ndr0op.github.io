@@ -3,3 +3,14 @@ CREATE TABLE IF NOT EXISTS emails (
   email TEXT UNIQUE NOT NULL,
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE TABLE IF NOT EXISTS comments (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  post_slug TEXT NOT NULL,
+  author TEXT NOT NULL DEFAULT '匿名用户',
+  body TEXT NOT NULL,
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE INDEX IF NOT EXISTS idx_comments_post_created_at
+ON comments (post_slug, created_at DESC);

@@ -24,8 +24,10 @@ $requiredFiles = @(
   "CNAME",
   "functions\api\subscribe.ts",
   "functions\api\download-skill.ts",
+  "functions\api\comments.ts",
   "schema.sql",
   "package.json",
+  "assets\comments.js",
   "posts\ai-native-builder.html",
   "posts\doubao-clear-question.html",
   "posts\ai-build-artifacts.html",
@@ -55,7 +57,7 @@ foreach ($file in $requiredFiles) {
 $index = Read-Text "index.html"
 foreach ($needle in @(
   "Ra1ndrop",
-  "styles.css?v=consulting-skill-20260605",
+  "styles.css?v=comments-20260605",
   "id=""waitlist-form""",
   "/api/subscribe",
   "Join The",
@@ -96,7 +98,9 @@ foreach ($needle in @(
   "letter-callout",
   "letter-list",
   "download-card",
-  "who-layout"
+  "who-layout",
+  "comments-section",
+  "comment-card"
 )) {
   Assert-Contains $styles $needle "styles.css must contain: $needle"
 }
@@ -104,6 +108,11 @@ foreach ($needle in @(
 $subscribeApi = Read-Text "functions\api\subscribe.ts"
 foreach ($needle in @("waitlist_db", "INSERT INTO emails", "UNIQUE")) {
   Assert-Contains $subscribeApi $needle "subscribe.ts must contain: $needle"
+}
+
+$commentsApi = Read-Text "functions\api\comments.ts"
+foreach ($needle in @("waitlist_db", "SELECT id, post_slug, author, body, created_at FROM comments", "INSERT INTO comments", "const author", "cleanBody")) {
+  Assert-Contains $commentsApi $needle "comments.ts must contain: $needle"
 }
 
 $downloadApi = Read-Text "functions\api\download-skill.ts"
@@ -122,8 +131,13 @@ foreach ($needle in @(
 }
 
 $schema = Read-Text "schema.sql"
-foreach ($needle in @("CREATE TABLE IF NOT EXISTS emails", "email TEXT UNIQUE NOT NULL")) {
+foreach ($needle in @("CREATE TABLE IF NOT EXISTS emails", "email TEXT UNIQUE NOT NULL", "CREATE TABLE IF NOT EXISTS comments", "post_slug TEXT NOT NULL", "body TEXT NOT NULL")) {
   Assert-Contains $schema $needle "schema.sql must contain: $needle"
+}
+
+$commentsJs = Read-Text "assets\comments.js"
+foreach ($needle in @("/api/comments", "Ra1ndropCommentSystem", "textContent", "dataset.postSlug")) {
+  Assert-Contains $commentsJs $needle "comments.js must contain: $needle"
 }
 
 $package = Read-Text "package.json" | ConvertFrom-Json
@@ -140,7 +154,7 @@ if ($cname -ne "www.raindropcn.com") {
 
 foreach ($postName in @("ai-native-builder.html", "doubao-clear-question.html", "ai-build-artifacts.html", "ai-cannot-publish.html")) {
   $post = Read-Text "posts\$postName"
-  foreach ($needle in @("letter-page", "letter-subscribe", "letter-article", "letter-meta", "Not A Subscriber?", "Read The")) {
+  foreach ($needle in @("letter-page", "letter-subscribe", "letter-article", "letter-meta", "Not A Subscriber?", "Read The", "../assets/comments.js")) {
     Assert-Contains $post $needle "post page $postName must contain: $needle"
   }
 }
