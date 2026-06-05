@@ -32,16 +32,20 @@ $requiredFiles = @(
   "posts\ai-cannot-publish.html",
   "projects\stardew-valley-poster.html",
   "projects\minecraft-voxel-poster.html",
+  "projects\consulting-cover-prompt.html",
   "assets\blog-ai-artifact-thumb.jpg",
   "assets\blog-ai-cannot-publish-thumb.jpg",
   "assets\ai-artifact-framework.svg",
   "assets\ai-judgment-framework.jpg",
   "assets\project-stardew-valley-poster.jpg",
   "assets\project-minecraft-voxel-poster.jpg",
+  "assets\project-consulting-cover-prompt.jpg",
   "assets\blog-doubao-clear-question-thumb.jpg",
   "assets\doubao-clear-question-framework.svg",
   "downloads\skills\stardew-valley-poster\SKILL.md",
-  "downloads\skills\minecraft-voxel-poster\SKILL.md"
+  "downloads\skills\minecraft-voxel-poster\SKILL.md",
+  "downloads\skills\consulting-cover-prompt\SKILL.md",
+  "downloads\skills\consulting-cover-prompt\references\prompt-template.md"
 )
 
 foreach ($file in $requiredFiles) {
@@ -51,15 +55,17 @@ foreach ($file in $requiredFiles) {
 $index = Read-Text "index.html"
 foreach ($needle in @(
   "Ra1ndrop",
-  "styles.css?v=poster-projects-20260529",
+  "styles.css?v=consulting-skill-20260605",
   "id=""waitlist-form""",
   "/api/subscribe",
   "Join The",
   "New 1%",
   "stardew-valley-poster",
   "minecraft-voxel-poster",
+  "consulting-cover-prompt",
   "/api/download-skill?name=stardew-valley-poster",
   "/api/download-skill?name=minecraft-voxel-poster",
+  "/api/download-skill?name=consulting-cover-prompt",
   "posts/doubao-clear-question.html",
   "assets/blog-doubao-clear-question-thumb.jpg",
   "posts/ai-build-artifacts.html",
@@ -109,6 +115,7 @@ foreach ($needle in @(
   "SKILL.md",
   "stardew-valley-poster",
   "minecraft-voxel-poster",
+  "consulting-cover-prompt",
   "downloads/skills"
 )) {
   Assert-Contains $downloadApi $needle "download-skill.ts must contain: $needle"
@@ -153,7 +160,7 @@ foreach ($needle in @("assets/ai-judgment-framework.jpg", "letter-figure", "lett
   Assert-Contains $oldAiPost $needle "AI article must contain: $needle"
 }
 
-foreach ($projectName in @("stardew-valley-poster.html", "minecraft-voxel-poster.html")) {
+foreach ($projectName in @("stardew-valley-poster.html", "minecraft-voxel-poster.html", "consulting-cover-prompt.html")) {
   $project = Read-Text "projects\$projectName"
   foreach ($needle in @("project-page", "project-summary", "letter-figure", "letter-callout", "letter-list", "download-card", "/api/download-skill?name=", "GitHub Raw", "Back to projects")) {
     Assert-Contains $project $needle "project page $projectName must contain: $needle"
@@ -164,5 +171,9 @@ $stardewSkill = Read-Text "downloads\skills\stardew-valley-poster\SKILL.md"
 Assert-Contains $stardewSkill "Stardew Valley Poster" "stardew skill download must contain skill body"
 $voxelSkill = Read-Text "downloads\skills\minecraft-voxel-poster\SKILL.md"
 Assert-Contains $voxelSkill "Minecraft Voxel Poster" "minecraft skill download must contain skill body"
+$consultingSkill = Read-Text "downloads\skills\consulting-cover-prompt\SKILL.md"
+Assert-Contains $consultingSkill "Consulting Cover Prompt" "consulting skill download must contain skill body"
+$consultingTemplate = Read-Text "downloads\skills\consulting-cover-prompt\references\prompt-template.md"
+Assert-Contains $consultingTemplate "Consulting Cover Prompt Template" "consulting prompt template must contain template body"
 
 Write-Host "Verification passed"

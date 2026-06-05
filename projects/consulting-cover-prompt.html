@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>consulting-cover-prompt | Ra1ndr0op</title>
+    <meta
+      name="description"
+      content="Ra1ndr0op 的 consulting-cover-prompt 项目：把商业主题、文章标题、报告/PPT/公众号封面需求转成策略咨询风生图提示词。"
+    />
+    <link rel="stylesheet" href="../styles.css?v=consulting-skill-20260605" />
+  </head>
+  <body>
+    <header class="site-header letter-header">
+      <a class="mark" href="../index.html#top" aria-label="Ra1ndr0op 首页">R1</a>
+      <a class="top-link" href="../index.html#subscribe">Read The Ra1ndr0op Notes</a>
+    </header>
+
+    <main class="letter-page project-page">
+      <section class="letter-subscribe" aria-labelledby="subscribe-title">
+        <h2 id="subscribe-title">Not A Subscriber?</h2>
+        <p>Join the build notes about AI workflows, one-person products, and shipping ideas before they get heavy.</p>
+        <a href="../index.html#subscribe">↗ Receive 2 build notes a week</a>
+      </section>
+
+      <article class="letter-article">
+        <div class="letter-meta">
+          <time datetime="2026-06-05">June 5, 2026</time>
+          <span>Project</span>
+        </div>
+        <h1>consulting-cover-prompt</h1>
+        <p class="letter-deck">
+          一个把“高级、理性、干净”拆成可执行约束的生图工作流。它专门处理商业主题、文章标题、报告/PPT 封面、公众号封面和单页咨询分析图。
+        </p>
+
+        <figure class="letter-figure">
+          <img src="../assets/project-consulting-cover-prompt.jpg" alt="consulting-cover-prompt 项目封面" />
+          <figcaption>不是让模型猜什么叫高级感，而是把标题系统、隐喻、版式、颜色和负面约束一次讲清楚。</figcaption>
+        </figure>
+
+        <div class="project-summary">
+          <div>
+            <span>Style</span>
+            <strong>Typography-led consulting visual</strong>
+          </div>
+          <div>
+            <span>Use</span>
+            <strong>PPT 封面、报告封面、公众号封面、单页信息图</strong>
+          </div>
+          <div>
+            <span>Core</span>
+            <strong>把审美偏好拆成模型能执行的约束</strong>
+          </div>
+        </div>
+
+        <div class="letter-body">
+          <section class="download-card" aria-labelledby="download-title">
+            <p class="project-kicker">Download</p>
+            <h2 id="download-title">拿走这个 Skill</h2>
+            <p>完整 `SKILL.md` 和提示词模板已经放进 GitHub 仓库。主按钮会调用本站后端下载接口，浏览器会直接保存文件；Raw 链接适合复制、检查和迁移。</p>
+            <div class="download-actions">
+              <a href="/api/download-skill?name=consulting-cover-prompt">↓ Download SKILL.md</a>
+              <a href="https://raw.githubusercontent.com/Ra1ndr0op/Ra1ndr0op.github.io/main/downloads/skills/consulting-cover-prompt/SKILL.md">↗ GitHub Raw</a>
+              <a href="../downloads/skills/consulting-cover-prompt/references/prompt-template.md">↗ Prompt Template</a>
+            </div>
+            <code>保存到：C:\Users\raind\.codex\skills\consulting-cover-prompt\SKILL.md</code>
+          </section>
+
+          <h2>它解决什么问题</h2>
+          <p>很多封面提示词的问题不是不够华丽，而是太空。你说“高端、极简、咨询风、干净”，模型会听见一堆形容词，但不知道第一优先级是什么。</p>
+          <p>这个 skill 会先判断你要的是封面还是一页信息图，再把主题压成 A/B/C 三层标题系统：核心词负责第一眼，完整标题负责理解，少量标签负责气质。</p>
+
+          <p class="letter-callout">重点不是堆“高级感”，而是让模型知道：哪里要留白，哪里要有隐喻，哪里绝对不能乱写字。</p>
+
+          <h2>我会怎么用它</h2>
+          <ul class="letter-list">
+            <li>给公众号文章做更像策略报告封面的头图，而不是普通 AI 配图。</li>
+            <li>给 PPT、报告、产品复盘和商业分析做一张能直接放在第一页的视觉。</li>
+            <li>把“增长、效率、机会、系统、风险、转化”这类抽象主题，转成坐标、路径、模块、阈值和结构。</li>
+          </ul>
+
+          <h2>它的工作方式</h2>
+          <p>它会限制画面只选一个主隐喻，比如增长路径、决策坐标、模块架构、风险阈值或市场窗口。这样画面不会同时出现漏斗、矩阵、箭头、节点和一堆伪文字。</p>
+          <p>如果模型容易把中文写坏，它会主动减少可见文字，只保留主标题、短副标题和 1-3 个标签。比起“看起来满”，我更要“第一眼能读懂”。</p>
+
+          <h2>后面会继续补什么</h2>
+          <p>这里先把项目入口、下载接口和模板放出来。后面我会继续补更多真实文章封面案例、失败提示词对比、中文标题压缩规则，以及一套适合公众号和 X 封面的固定比例参数。</p>
+        </div>
+
+        <footer class="letter-footer">
+          <p>这是 Ra1ndr0op 的视觉生成实验之一：把模糊审美拆成可以复用、可以迁移、可以被模型稳定执行的工作流。</p>
+          <a href="../index.html#resources">↗ Back to projects</a>
+        </footer>
+      </article>
+    </main>
+  </body>
+</html>
