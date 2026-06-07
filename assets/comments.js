@@ -91,11 +91,24 @@
     list.replaceChildren(empty);
   }
 
+  async function readJson(response) {
+    const contentType = response.headers.get("Content-Type") || "";
+    if (!contentType.includes("application/json")) {
+      return { error: "评论服务暂时不可用，请稍后再试。" };
+    }
+    return response.json();
+  }
+
   async function loadComments() {
     setMessage("正在读取评论...", "neutral");
     try {
       const response = await fetch(`/api/comments?postSlug=${encodeURIComponent(slug)}`);
-      const data = await response.json();
+      const data = await readJson(response);
+      if (!response.ok) {
+        renderEmpty();
+        setMessage(data.error || "评论暂时读取失败，稍后刷新再试。", "error");
+        return;
+      }
       const comments = Array.isArray(data.comments) ? data.comments : [];
       if (comments.length === 0) {
         renderEmpty();
@@ -130,7 +143,7 @@
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ postSlug: slug, author, body }),
       });
-      const data = await response.json();
+      const data = await readJson(response);
 
       if (!response.ok) {
         setMessage(data.error || "评论发布失败，请稍后重试。", "error");

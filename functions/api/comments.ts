@@ -111,7 +111,7 @@ export const onRequest: PagesFunction<Env> = async ({ request, env }) => {
       if (!postSlug) {
         return json({ error: "文章标识无效" }, 400);
       }
-      return readComments(env, postSlug);
+      return await readComments(env, postSlug);
     }
 
     if (request.method === "POST") {
@@ -122,7 +122,7 @@ export const onRequest: PagesFunction<Env> = async ({ request, env }) => {
         return json({ error: "请求内容无效" }, 400);
       }
 
-      return createComment(env, body);
+      return await createComment(env, body);
     }
 
     return json({ error: "只支持 GET 和 POST 请求" }, 405);

@@ -111,7 +111,7 @@ foreach ($needle in @("waitlist_db", "INSERT INTO emails", "UNIQUE")) {
 }
 
 $commentsApi = Read-Text "functions\api\comments.ts"
-foreach ($needle in @("waitlist_db", "SELECT id, post_slug, author, body, created_at FROM comments", "INSERT INTO comments", "const author", "cleanBody")) {
+foreach ($needle in @("waitlist_db", "SELECT id, post_slug, author, body, created_at FROM comments", "INSERT INTO comments", "const author", "cleanBody", "return await readComments", "return await createComment")) {
   Assert-Contains $commentsApi $needle "comments.ts must contain: $needle"
 }
 
@@ -136,7 +136,7 @@ foreach ($needle in @("CREATE TABLE IF NOT EXISTS emails", "email TEXT UNIQUE NO
 }
 
 $commentsJs = Read-Text "assets\comments.js"
-foreach ($needle in @("/api/comments", "Ra1ndropCommentSystem", "textContent", "dataset.postSlug")) {
+foreach ($needle in @("/api/comments", "Ra1ndropCommentSystem", "textContent", "dataset.postSlug", "readJson", "Content-Type")) {
   Assert-Contains $commentsJs $needle "comments.js must contain: $needle"
 }
 
