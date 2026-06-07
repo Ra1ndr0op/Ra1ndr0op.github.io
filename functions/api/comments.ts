@@ -61,7 +61,21 @@ function publicComment(row: CommentRow) {
   };
 }
 
+async function ensureCommentsTable(env: Env): Promise<void> {
+  await env.waitlist_db
+    .prepare(
+      "CREATE TABLE IF NOT EXISTS comments (id INTEGER PRIMARY KEY AUTOINCREMENT, post_slug TEXT NOT NULL, author TEXT NOT NULL DEFAULT '匿名用户', body TEXT NOT NULL, created_at DATETIME DEFAULT CURRENT_TIMESTAMP)"
+    )
+    .run();
+
+  await env.waitlist_db
+    .prepare("CREATE INDEX IF NOT EXISTS idx_comments_post_created_at ON comments (post_slug, created_at DESC)")
+    .run();
+}
+
 async function readComments(env: Env, postSlug: string): Promise<Response> {
+  await ensureCommentsTable(env);
+
   const result = await env.waitlist_db
     .prepare(
       "SELECT id, post_slug, author, body, created_at FROM comments WHERE post_slug = ? ORDER BY created_at DESC LIMIT 50"
@@ -84,6 +98,8 @@ async function createComment(env: Env, body: CommentBody): Promise<Response> {
   if (!commentBody) {
     return json({ error: "评论内容太短" }, 400);
   }
+
+  await ensureCommentsTable(env);
 
   const inserted = await env.waitlist_db
     .prepare(
