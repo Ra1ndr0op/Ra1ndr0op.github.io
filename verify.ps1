@@ -280,7 +280,7 @@ foreach ($productPage in @("aiti-ai-type-indicator.html", "quick-capture.html"))
 }
 
 $aitiPage = Read-Text "projects\aiti-ai-type-indicator.html"
-foreach ($needle in @("AITI / AI Type Indicator", "https://aiti.ra1ndr0op.com", "../assets/product-aiti-chatgpt.png", "Chinese AI personality quiz", "Cloudflare Pages")) {
+foreach ($needle in @("AITI / AI Type Indicator", "https://aiti.raindropcn.com", "../assets/product-aiti-chatgpt.png", "Chinese AI personality quiz", "Cloudflare Pages")) {
   Assert-Contains $aitiPage $needle "AITI page must contain: $needle"
 }
 
