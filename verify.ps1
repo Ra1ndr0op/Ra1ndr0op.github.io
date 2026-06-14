@@ -57,9 +57,6 @@ $requiredFiles = @(
   "assets\ra1ndrop-avatar-black.png",
   "assets\ra1ndrop-avatar-transparent.png",
   "assets\ra1ndrop-avatar-web.png",
-  "assets\pixel2motion\logo.svg",
-  "assets\pixel2motion\logo_motion.html",
-  "assets\pixel2motion\motion_spec.md",
   "downloads\skills\stardew-valley-poster\SKILL.md",
   "downloads\skills\minecraft-voxel-poster\SKILL.md",
   "downloads\skills\consulting-cover-prompt\SKILL.md",
@@ -110,9 +107,7 @@ foreach ($needle in @(
   "logo-mark-link",
   "assets/ra1ndrop-avatar-transparent.png",
   "assets/ra1ndrop-avatar-web.png",
-  "p2m-logo",
-  "p2m-wordmark",
-  "p2m-dot",
+  "assets/ra1ndrop-main-logo-web.png",
   "latest-updates",
   "Recently Updated",
   "data-latest-updates",
@@ -195,9 +190,6 @@ foreach ($needle in @(
   "logo-mark-link",
   "entry-brand-logo",
   "home-brand-logo",
-  "p2m-mark-stage",
-  "p2m-dot-breathe",
-  "prefers-reduced-motion",
   "circle-field",
   "rounded-surface",
   "home-hero",
@@ -251,11 +243,6 @@ foreach ($needle in @("CREATE TABLE IF NOT EXISTS emails", "email TEXT UNIQUE NO
 $commentsJs = Read-Text "assets\comments.js"
 foreach ($needle in @("/api/comments", "Ra1ndropCommentSystem", "textContent", "dataset.postSlug", "readJson", "Content-Type")) {
   Assert-Contains $commentsJs $needle "comments.js must contain: $needle"
-}
-
-$motionHtml = Read-Text "assets\pixel2motion\logo_motion.html"
-foreach ($needle in @("#logo-root", "Replay", "Speed", "p2mReady", "__p2mReady", "params.has(""t"")", "params.has(""static"")", "prefers-reduced-motion")) {
-  Assert-Contains $motionHtml $needle "logo_motion.html must contain: $needle"
 }
 
 $package = Read-Text "package.json" | ConvertFrom-Json
