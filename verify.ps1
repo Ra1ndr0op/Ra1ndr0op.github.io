@@ -310,8 +310,13 @@ foreach ($needle in @("AITI / AI Type Indicator", "https://aiti.raindropcn.com",
 }
 
 $quickCapturePage = Read-Text "projects\quick-capture.html"
-foreach ($needle in @("Quick Capture", "../assets/product-quick-capture-icon.png", "Tauri + Svelte + Rust + DeepSeek", "Download ZIP", "../downloads/apps/quick-capture/quick-capture-0.1.0-minimize-hotkey-fix-windows-x64.zip", "Obsidian Markdown")) {
+foreach ($needle in @("Quick Capture", "../assets/product-quick-capture-icon.png", "Tauri + Svelte + Rust + DeepSeek", "Download Windows App", "/api/download-quick-capture", "quick-capture-0.1.0-windows-x64.exe", "Obsidian Markdown")) {
   Assert-Contains $quickCapturePage $needle "Quick Capture page must contain: $needle"
+}
+
+$quickCaptureDownload = Read-Text "functions\api\download-quick-capture.ts"
+foreach ($needle in @("QUICK_CAPTURE_DOWNLOADS", "quick-capture/quick-capture-0.1.0-windows-x64.exe", "application/octet-stream", "Content-Disposition", "attachment; filename=")) {
+  Assert-Contains $quickCaptureDownload $needle "Quick Capture download endpoint must contain: $needle"
 }
 
 $quickCaptureLanding = Read-Text "quick-capture\index.html"
