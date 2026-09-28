@@ -4,3 +4,4 @@ node_modules/
 .wrangler/
 wrangler.local.toml
 wrangler.remote.toml
+quick-capture/downloads/quick-capture.exe

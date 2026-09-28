@@ -38,6 +38,8 @@ $requiredFiles = @(
   "projects\consulting-cover-prompt.html",
   "projects\aiti-ai-type-indicator.html",
   "projects\quick-capture.html",
+  "quick-capture\index.html",
+  "quick-capture\quick-capture-preview.png",
   "assets\blog-ai-artifact-thumb.jpg",
   "assets\blog-ai-cannot-publish-thumb.jpg",
   "assets\ai-artifact-framework.svg",
@@ -132,7 +134,7 @@ foreach ($needle in @(
   "assets/product-aiti-cover-ios.jpg",
   "assets/product-aiti-chatgpt.png",
   "Quick Capture",
-  "projects/quick-capture.html",
+  "quick-capture/",
   "assets/product-quick-capture-cover-ios.jpg",
   "assets/product-quick-capture-icon.png",
   "id=""resources""",
@@ -310,6 +312,11 @@ foreach ($needle in @("AITI / AI Type Indicator", "https://aiti.raindropcn.com",
 $quickCapturePage = Read-Text "projects\quick-capture.html"
 foreach ($needle in @("Quick Capture", "../assets/product-quick-capture-icon.png", "Tauri + Svelte + Rust + DeepSeek", "Download ZIP", "../downloads/apps/quick-capture/quick-capture-0.1.0-minimize-hotkey-fix-windows-x64.zip", "Obsidian Markdown")) {
   Assert-Contains $quickCapturePage $needle "Quick Capture page must contain: $needle"
+}
+
+$quickCaptureLanding = Read-Text "quick-capture\index.html"
+foreach ($needle in @("Quick Capture", "/quick-capture/assets/", "./favicon.svg", "让 AI 记住你的想法")) {
+  Assert-Contains $quickCaptureLanding $needle "Quick Capture landing page must contain: $needle"
 }
 
 $stardewSkill = Read-Text "downloads\skills\stardew-valley-poster\SKILL.md"
