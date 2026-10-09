@@ -2,8 +2,8 @@ interface Env {
   QUICK_CAPTURE_DOWNLOADS: R2Bucket;
 }
 
-const objectKey = "quick-capture/quick-capture-0.1.0-windows-x64.exe";
-const downloadName = "quick-capture-0.1.0-windows-x64.exe";
+const objectKey = "quick-capture/quick-capture-0.1.0-windows-x64-setup.exe";
+const downloadName = "quick-capture-0.1.0-windows-x64-setup.exe";
 
 export const onRequest: PagesFunction<Env> = async ({ request, env }) => {
   if (request.method !== "GET" && request.method !== "HEAD") {
