@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111619">
+  <meta name="description" content="进入 Quick Response 示例工作台，体验退款、配送、技术支持与人工接管流程，查看预设回复和示例知识依据。">
+  <title>Quick Response｜体验聊天工作台</title>
+  <link rel="canonical" href="https://www.raindropcn.com/quick-response/app/">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./app.css?v=demo-20261011">
+  <script src="./demo.js?v=20261011" type="module"></script>
+</head>
+<body class="demo-workbench">
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar" aria-label="演示工作空间">
+      <div class="brand-row">
+        <div class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></div>
+        <div><strong>Quick Response</strong><small>智能客服工作台</small></div>
+        <button class="icon-button mobile-close" id="closeSidebar" type="button" aria-label="关闭侧栏">×</button>
+      </div>
+      <button class="new-chat" id="newChat" type="button"><span aria-hidden="true">＋</span> 新建会话 <kbd>Ctrl K</kbd></button>
+      <div class="nav-label">工作空间</div>
+      <nav aria-label="工作台导航">
+        <button class="nav-item active" type="button" data-view="chat" aria-pressed="true"><span class="nav-icon" aria-hidden="true">◷</span> 对话工作台</button>
+        <button class="nav-item" type="button" data-view="knowledge" aria-pressed="false"><span class="nav-icon" aria-hidden="true">▤</span> 示例知识库 <span class="nav-count" id="knowledgeCount">4</span></button>
+      </nav>
+      <div class="history-heading"><span>场景会话</span><small>预设示例</small></div>
+      <div class="conversation-list" id="conversationList" aria-label="四种示例会话"></div>
+      <div class="sidebar-footer">
+        <div class="user-avatar" aria-hidden="true">Q</div>
+        <div class="user-copy"><strong>青禾商店</strong><small>虚构示例团队 · 无需登录</small></div>
+      </div>
+      <div class="sidebar-links"><a href="../">了解产品</a><a href="/home.html#products">Ra1ndrop Products ↗</a></div>
+    </aside>
+
+    <main class="main-panel">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="icon-button menu-toggle" id="openSidebar" type="button" aria-label="打开侧栏" aria-controls="sidebar" aria-expanded="false">☰</button>
+          <div class="breadcrumb"><span>青禾商店</span><b aria-hidden="true">/</b><strong id="viewTitle">对话工作台</strong></div>
+        </div>
+        <a class="demo-return" href="../">了解产品 ↗</a>
+      </header>
+      <div class="demo-notice" id="demoNotice"><strong>预设场景演示</strong><span>使用虚构数据与预设回复，未调用实时 AI；输入不会上传。</span></div>
+      <noscript><p class="demo-noscript">请启用 JavaScript 体验聊天示例。也可以<a href="../#evidence">查看产品处理示例</a>。</p></noscript>
+
+      <section class="chat-view" id="chatView" aria-label="客服对话示例">
+        <div class="scenario-bar" id="scenarioBar">
+          <div class="scenario-heading"><span>当前示例</span><strong id="scenarioLabel">退款与账单</strong><button class="quiet-button" id="copyAnswer" type="button">复制示例回复</button></div>
+          <div class="scenario-picker" aria-label="切换客服场景">
+            <button class="scenario-chip" type="button" data-scenario="refund">退款与账单</button>
+            <button class="scenario-chip" type="button" data-scenario="delivery">订单与配送</button>
+            <button class="scenario-chip" type="button" data-scenario="technical">技术支持</button>
+            <button class="scenario-chip" type="button" data-scenario="handoff">转人工</button>
+          </div>
+        </div>
+        <div class="chat-scroll" id="chatScroll">
+          <div class="welcome" id="welcome">
+            <div class="welcome-mark" aria-hidden="true">Q</div>
+            <p class="eyebrow">客服协作 · 场景体验</p>
+            <h1>选一个问题，看看如何处理。</h1>
+            <p class="welcome-copy">从示例知识中找依据，查看回复建议，遇到例外再交给人工。</p>
+            <div class="prompt-grid">
+              <button class="prompt-card" type="button" data-scenario="refund"><span class="prompt-icon mint" aria-hidden="true">↩</span><span><strong>退款与账单</strong><small>首次订阅还没使用，可以退款吗？</small></span><b aria-hidden="true">↗</b></button>
+              <button class="prompt-card" type="button" data-scenario="delivery"><span class="prompt-icon amber" aria-hidden="true">⌖</span><span><strong>订单与配送</strong><small>发货后物流没有更新，怎么办？</small></span><b aria-hidden="true">↗</b></button>
+              <button class="prompt-card" type="button" data-scenario="technical"><span class="prompt-icon blue" aria-hidden="true">⌘</span><span><strong>技术支持</strong><small>接口返回 401，应该先检查什么？</small></span><b aria-hidden="true">↗</b></button>
+              <button class="prompt-card" type="button" data-scenario="handoff"><span class="prompt-icon rose" aria-hidden="true">↗</span><span><strong>转人工判断</strong><small>特殊折扣和退款期例外，谁来批准？</small></span><b aria-hidden="true">↗</b></button>
+            </div>
+          </div>
+          <div class="messages" id="messages" aria-live="polite" aria-label="示例聊天记录"></div>
+        </div>
+        <div class="composer-wrap">
+          <div class="composer" id="composer">
+            <textarea id="messageInput" rows="1" maxlength="1000" placeholder="试试“退款怎么处理”或选择上面的示例场景" aria-label="输入演示问题" aria-describedby="composerStatus"></textarea>
+            <div class="composer-tools">
+              <div class="composer-hints"><span class="secure-dot" aria-hidden="true"></span> 示例知识增强 <span class="hint-divider" aria-hidden="true">·</span> 预设回复</div>
+              <div class="composer-actions">
+                <button class="handoff-button demo-handoff hidden" id="handoffButton" type="button">查看人工接管示例</button>
+                <button class="send-button" id="sendButton" type="button" aria-label="查看预设参考回复" title="查看预设参考回复"><span aria-hidden="true">↑</span></button>
+                <button class="stop-button hidden" id="stopButton" type="button" aria-label="停止演示">■</button>
+              </div>
+            </div>
+          </div>
+          <p class="composer-status" id="composerStatus" role="status">仅体验四种预设场景，不执行退款、订单变更或真实人工通知。</p>
+        </div>
+      </section>
+
+      <section class="knowledge-view hidden" id="knowledgeView" aria-label="示例知识库">
+        <div class="knowledge-header"><div><p class="eyebrow">虚构企业知识</p><h1>示例知识库</h1><p>这些材料用于展示回答的依据，均为青禾商店的虚构政策。</p></div></div>
+        <div class="knowledge-search"><input id="knowledgeQuery" type="search" maxlength="200" aria-label="检索示例知识" placeholder="例如：退款、配送、401、特殊折扣"><button class="secondary-button" id="knowledgeSearch" type="button">本地检索</button></div>
+        <div class="knowledge-search-results hidden" id="knowledgeSearchResults" aria-live="polite"></div>
+        <div class="document-toolbar"><strong>示例文档 <span id="documentCount">4</span></strong><span>仅供阅读</span></div>
+        <div class="document-list" id="documentList"></div>
+        <p class="knowledge-demo-note">本演示不接收文件上传。真实企业知识接入范围可在<a href="../#demo">团队试点评估</a>时确认。</p>
+      </section>
+    </main>
+  </div>
+  <div class="mobile-scrim" id="mobileScrim" aria-hidden="true"></div>
+</body>
+</html>

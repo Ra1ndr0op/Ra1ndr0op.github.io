@@ -44,6 +44,10 @@ $requiredFiles = @(
   "quick-response\landing.js",
   "quick-response\workbench-preview.png",
   "quick-response\favicon.svg",
+  "quick-response\app\index.html",
+  "quick-response\app\app.css",
+  "quick-response\app\demo.js",
+  "quick-response\app\demo-data.js",
   "functions\api\quick-response-demo.ts",
   "quick-capture\quick-capture-preview.png",
   "assets\blog-ai-artifact-thumb.jpg",
@@ -143,6 +147,7 @@ foreach ($needle in @(
   "Quick Capture",
   "Quick Response",
   "quick-response/",
+  "quick-response/app/",
   "assets/product-quick-response-cover-3d.jpg",
   "quick-capture/",
   "assets/product-quick-capture-cover-ios.jpg",
@@ -348,6 +353,15 @@ foreach ($needle in @("waitlist_db", "quick_response_demo_requests")) {
   Assert-Contains $quickResponseApi $needle "Quick Response API must contain: $needle"
 }
 Assert-Contains $schema "quick_response_demo_requests" "schema.sql must define the Quick Response request table"
+
+Assert-Contains $quickResponseLanding "./app/" "Quick Response must offer a workbench demo entry"
+$quickResponseDemo = Read-Text "quick-response\app\index.html"
+foreach ($needle in @("Quick Response", "预设场景演示", "未调用实时 AI", "输入不会上传", "./app.css?v=demo-20261011", "./demo.js?v=20261011", "type=""module""", "conversationList", "messageInput", "knowledgeView", "data-scenario=""refund""", "data-scenario=""delivery""", "data-scenario=""technical""", "data-scenario=""handoff""")) {
+  Assert-Contains $quickResponseDemo $needle "Quick Response demo must contain: $needle"
+}
+if ($quickResponseDemo -match '/static/|authForm|type="file"') {
+  throw "Quick Response demo must not include unavailable backend actions"
+}
 
 $stardewSkill = Read-Text "downloads\skills\stardew-valley-poster\SKILL.md"
 Assert-Contains $stardewSkill "Stardew Valley Poster" "stardew skill download must contain skill body"
