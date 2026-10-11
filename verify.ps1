@@ -35,6 +35,7 @@ $requiredFiles = @(
   "posts\ai-cannot-publish.html",
   "projects\stardew-valley-poster.html",
   "projects\minecraft-voxel-poster.html",
+  "projects\electric-poster.html",
   "projects\consulting-cover-prompt.html",
   "projects\aiti-ai-type-indicator.html",
   "projects\quick-capture.html",
@@ -62,6 +63,7 @@ $requiredFiles = @(
   "assets\project-stardew-valley-poster.jpg",
   "assets\project-minecraft-voxel-poster.jpg",
   "assets\project-consulting-cover-prompt.jpg",
+  "assets\electric-poster.css",
   "assets\blog-doubao-clear-question-thumb.jpg",
   "assets\doubao-clear-question-framework.svg",
   "assets\ra1ndrop-main-logo-black.png",
@@ -74,6 +76,16 @@ $requiredFiles = @(
   "downloads\skills\minecraft-voxel-poster\SKILL.md",
   "downloads\skills\consulting-cover-prompt\SKILL.md",
   "downloads\skills\consulting-cover-prompt\references\prompt-template.md",
+  "downloads\skills\electric-poster.zip",
+  "downloads\skills\electric-poster\SKILL.md",
+  "downloads\skills\electric-poster\agents\openai.yaml",
+  "downloads\skills\electric-poster\references\style-bible.md",
+  "downloads\skills\electric-poster\references\text-layout-rules.md",
+  "downloads\skills\electric-poster\references\prompt-templates.md",
+  "downloads\skills\electric-poster\assets\reference-01.jpg",
+  "downloads\skills\electric-poster\assets\reference-02.jpg",
+  "downloads\skills\electric-poster\assets\reference-03.jpg",
+  "downloads\skills\electric-poster\assets\reference-04.jpg",
   "downloads\apps\quick-capture\quick-capture-0.1.0-minimize-hotkey-fix-windows-x64.zip"
 )
 
@@ -165,6 +177,8 @@ foreach ($needle in @(
   "/api/download-skill?name=stardew-valley-poster",
   "/api/download-skill?name=minecraft-voxel-poster",
   "/api/download-skill?name=consulting-cover-prompt",
+  "/api/download-skill?name=electric-poster",
+  "projects/electric-poster.html",
   "posts/doubao-clear-question.html",
   "assets/blog-doubao-clear-question-thumb.jpg",
   "posts/ai-build-artifacts.html",
@@ -247,6 +261,8 @@ foreach ($needle in @(
   "stardew-valley-poster",
   "minecraft-voxel-poster",
   "consulting-cover-prompt",
+  "electric-poster.zip",
+  "application/zip",
   "downloads/skills"
 )) {
   Assert-Contains $downloadApi $needle "download-skill.ts must contain: $needle"
@@ -299,7 +315,7 @@ foreach ($needle in @("assets/ai-judgment-framework.jpg", "letter-figure", "lett
   Assert-Contains $oldAiPost $needle "AI article must contain: $needle"
 }
 
-foreach ($projectName in @("stardew-valley-poster.html", "minecraft-voxel-poster.html", "consulting-cover-prompt.html")) {
+foreach ($projectName in @("stardew-valley-poster.html", "minecraft-voxel-poster.html", "consulting-cover-prompt.html", "electric-poster.html")) {
   $project = Read-Text "projects\$projectName"
   foreach ($needle in @("project-page", "project-summary", "letter-figure", "letter-callout", "letter-list", "download-card", "/api/download-skill?name=", "GitHub Raw", "Back to projects", "../home.html#resources", "../home.html#subscribe")) {
     Assert-Contains $project $needle "project page $projectName must contain: $needle"
@@ -371,5 +387,33 @@ $consultingSkill = Read-Text "downloads\skills\consulting-cover-prompt\SKILL.md"
 Assert-Contains $consultingSkill "Consulting Cover Prompt" "consulting skill download must contain skill body"
 $consultingTemplate = Read-Text "downloads\skills\consulting-cover-prompt\references\prompt-template.md"
 Assert-Contains $consultingTemplate "Consulting Cover Prompt Template" "consulting prompt template must contain template body"
+
+$electricSkill = Read-Text "downloads\skills\electric-poster\SKILL.md"
+foreach ($needle in @("name: electric-poster", "references/style-bible.md", "references/text-layout-rules.md", "references/prompt-templates.md")) {
+  Assert-Contains $electricSkill $needle "Electric Poster must preserve its full skill and reference paths"
+}
+$electricProject = Read-Text "projects\electric-poster.html"
+foreach ($needle in @("/api/download-skill?name=electric-poster", "electric-poster.zip", "Download Skill (.zip)", "GitHub Raw", "风格参考", "electric-poster.css")) {
+  Assert-Contains $electricProject $needle "Electric Poster page must contain: $needle"
+}
+
+# Ensure the full download stays installable and matches the published skill files.
+Add-Type -AssemblyName System.IO.Compression.FileSystem
+$electricEntries = @("SKILL.md", "agents/openai.yaml", "references/style-bible.md", "references/text-layout-rules.md", "references/prompt-templates.md", "assets/reference-01.jpg", "assets/reference-02.jpg", "assets/reference-03.jpg", "assets/reference-04.jpg")
+$electricZip = [IO.Compression.ZipFile]::OpenRead((Join-Path $root "downloads\skills\electric-poster.zip"))
+try {
+  if ($electricZip.Entries.Count -ne $electricEntries.Count) { throw "Electric Poster ZIP must contain all 9 skill files" }
+  foreach ($relativePath in $electricEntries) {
+    $entry = $electricZip.GetEntry("electric-poster/$relativePath")
+    if ($null -eq $entry) { throw "Electric Poster ZIP is missing: $relativePath" }
+    $entryStream = $entry.Open()
+    $entryHash = [Security.Cryptography.SHA256]::Create()
+    try { $zipHash = [BitConverter]::ToString($entryHash.ComputeHash($entryStream)).Replace("-", "") }
+    finally { $entryStream.Dispose(); $entryHash.Dispose() }
+    $diskHash = (Get-FileHash -Algorithm SHA256 -LiteralPath (Join-Path $root "downloads/skills/electric-poster/$relativePath")).Hash
+    if ($zipHash -ne $diskHash) { throw "Electric Poster ZIP differs from the published skill: $relativePath" }
+  }
+}
+finally { $electricZip.Dispose() }
 
 Write-Host "Verification passed"

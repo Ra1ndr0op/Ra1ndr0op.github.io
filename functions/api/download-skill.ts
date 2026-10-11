@@ -326,6 +326,36 @@ export const onRequest: PagesFunction = async ({ request }) => {
 
   const url = new URL(request.url);
   const name = url.searchParams.get("name");
+  if (name === "electric-poster") {
+    const source = "/downloads/skills/electric-poster.zip";
+    let asset: Response;
+    try {
+      asset = await fetch(new URL(source, url), { method: request.method });
+    } catch {
+      return json({ error: "Skill package is unavailable" }, 502);
+    }
+    if (!asset.ok) {
+      return json({ error: "Skill package is unavailable" }, 502);
+    }
+
+    const filename = "electric-poster.zip";
+    const headers = new Headers({
+      ...corsHeaders,
+      "Content-Type": "application/zip",
+      "Content-Disposition": `attachment; filename="${filename}"; filename*=UTF-8''${encodeURIComponent(filename)}`,
+      "Cache-Control": "public, max-age=300",
+      "X-Content-Type-Options": "nosniff",
+      "X-Skill-Source": source,
+    });
+    const length = asset.headers.get("Content-Length");
+    if (length) headers.set("Content-Length", length);
+
+    return new Response(request.method === "HEAD" ? null : asset.body, {
+      status: 200,
+      headers,
+    });
+  }
+
   if (!isSkillName(name)) {
     return json({ error: "Unknown skill" }, 404);
   }

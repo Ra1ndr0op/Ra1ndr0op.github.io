@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>electric-poster | Ra1ndrop</title>
+    <meta name="description" content="electric-poster：电蓝、洋红大字、分层剪影和荧光线稿组成的 2.5D 实验海报 Skill。下载完整风格规范、排版规则、提示词模板与参考图。" />
+    <link rel="canonical" href="https://www.raindropcn.com/projects/electric-poster" />
+    <meta property="og:title" content="electric-poster | Ra1ndrop" />
+    <meta property="og:description" content="把电蓝洋红的实验海报风格，拆成可复用的颜色、文字、层次与构图规则。" />
+    <meta property="og:image" content="https://www.raindropcn.com/downloads/skills/electric-poster/assets/reference-04.jpg" />
+    <link rel="icon" type="image/png" href="../assets/ra1ndrop-avatar-transparent.png" />
+    <link rel="stylesheet" href="../styles.css?v=products-20261011" />
+    <link rel="stylesheet" href="../assets/electric-poster.css?v=20261011" />
+  </head>
+  <body>
+    <header class="site-header letter-header">
+      <a class="mark logo-mark-link" href="../index.html" aria-label="Ra1ndrop 首页"><img src="../assets/ra1ndrop-avatar-web.png" alt="" /></a>
+      <a class="top-link" href="../home.html#subscribe">Read The Ra1ndrop Notes</a>
+    </header>
+
+    <main class="letter-page project-page">
+      <section class="letter-subscribe" aria-labelledby="subscribe-title">
+        <h2 id="subscribe-title">Not A Subscriber?</h2>
+        <p>Join the build notes about AI workflows, one-person products, and shipping ideas before they get heavy.</p>
+        <a href="../home.html#subscribe">↗ Receive 2 build notes a week</a>
+      </section>
+
+      <article class="letter-article">
+        <div class="letter-meta"><time datetime="2026-10-11">October 11, 2026</time><span>Skill</span></div>
+        <h1>electric-poster</h1>
+        <p class="letter-deck">用电蓝的色场、洋红的大字、分层剪影和荧光线稿，把一个主题做成有张力的 2.5D 实验海报。颜色、文字、空间和印刷质感都有可执行的规则。</p>
+
+        <figure class="letter-figure">
+          <img src="../downloads/skills/electric-poster/assets/reference-04.jpg" width="1080" height="720" alt="Electric Poster 随 Skill 附带的风格参考：电蓝、洋红大字、线稿和深色剪影" />
+          <figcaption>Skill 附带的风格参考 04：硬对比色场、前景线稿、偏斜大字与深色背景层。</figcaption>
+        </figure>
+
+        <div class="project-summary">
+          <div><span>Style</span><strong>2.5D electric editorial poster</strong></div>
+          <div><span>Use</span><strong>活动海报、数字杂志、社交封面</strong></div>
+          <div><span>Core</span><strong>用颜色、遮挡与文字层级建立张力</strong></div>
+        </div>
+
+        <div class="letter-body">
+          <section class="download-card" aria-labelledby="download-title">
+            <p class="project-kicker">Download</p>
+            <h2 id="download-title">拿走完整 Skill</h2>
+            <p>下载包保留完整目录：<code>SKILL.md</code>、三份风格与提示词文档、四张参考图，以及 Agent 显示配置。解压后，将 <code>electric-poster</code> 文件夹放入你的 Codex skills 目录。</p>
+            <div class="download-actions">
+              <a href="/api/download-skill?name=electric-poster">↓ Download Skill (.zip)</a>
+              <a href="../downloads/skills/electric-poster.zip" download="electric-poster.zip">↓ ZIP 备用下载</a>
+              <a href="https://raw.githubusercontent.com/Ra1ndr0op/Ra1ndr0op.github.io/main/downloads/skills/electric-poster/SKILL.md">↗ GitHub Raw</a>
+            </div>
+            <code>目录结构：~/.codex/skills/electric-poster/SKILL.md</code>
+          </section>
+
+          <h2>把风格拆成可以执行的规则</h2>
+          <p>这个 Skill 会先整理主题、准确文字、画布比例和信息密度，再规划背景、主体文字、前景线稿与表面质感。电蓝与洋红负责对比，剪影与错位副本负责层次，局部颗粒和印刷错版负责触感。</p>
+          <p class="letter-callout">先让标题清楚，再用遮挡、偏斜与错位制造张力。</p>
+
+          <h2>有参考图，也能从零开始</h2>
+          <ul class="letter-list">
+            <li><strong>没有参考图：</strong>从风格规范出发，按主题安排标题与构图。</li>
+            <li><strong>一张参考图：</strong>校准文字层级、密度和空间关系，重新设计内容。</li>
+            <li><strong>两到四张参考图：</strong>提取共用的配色、文字行为、线稿与印刷语言。</li>
+            <li><strong>指定局部修改：</strong>按需求保留选定参考的构图，替换文字或主体。</li>
+          </ul>
+
+          <h2>开始使用</h2>
+          <p>安装后，调用 <code>$electric-poster</code>，给出主题、主标题、比例和你想要的结果。可以要求输出可复制的提示词；需要直接生图时，使用环境须有可用的图像生成工具。</p>
+          <blockquote class="letter-callout electric-example">用 $electric-poster 做一张关于创作实验的 3:4 海报。主标题是“BUILD IN PUBLIC”，副标题是“把想法做出来”。电蓝底、洋红大字，保留清楚的文字层级。先输出可直接使用的生图提示词。</blockquote>
+          <p>较长正文、二维码和密集的小标签适合在后续排版中补齐。Skill 会保留要求的准确文字，并说明哪些部分需要后期排版。</p>
+
+          <h2>随包附带的风格参考</h2>
+          <p>下面是 Skill 内的三张竖版参考，页首是第四张横版参考。它们用于校准视觉语言；生成时按需求选择参考，不必每次全部附上。</p>
+          <div class="electric-reference-grid">
+            <figure><a href="../downloads/skills/electric-poster/assets/reference-01.jpg" aria-label="打开风格参考 01 原图"><img src="../downloads/skills/electric-poster/assets/reference-01.jpg" width="1280" height="1712" alt="风格参考 01：大字、荧光符号与蓝黑背景形成前后层次" loading="lazy" /></a><figcaption>01 · 大字与背景分层</figcaption></figure>
+            <figure><a href="../downloads/skills/electric-poster/assets/reference-02.jpg" aria-label="打开风格参考 02 原图"><img src="../downloads/skills/electric-poster/assets/reference-02.jpg" width="1280" height="1712" alt="风格参考 02：洋红文字、人物剪影与局部印刷错位" loading="lazy" /></a><figcaption>02 · 拼贴与印刷错位</figcaption></figure>
+            <figure><a href="../downloads/skills/electric-poster/assets/reference-03.jpg" aria-label="打开风格参考 03 原图"><img src="../downloads/skills/electric-poster/assets/reference-03.jpg" width="1280" height="1712" alt="风格参考 03：高密度信息、荧光线稿与少量酸绿色强调" loading="lazy" /></a><figcaption>03 · 密度与荧光线稿</figcaption></figure>
+          </div>
+        </div>
+
+        <footer class="letter-footer"><p>Electric Poster：把鲜明的视觉偏好沉淀成可复用的海报工作流。</p><a href="../home.html#resources">↗ Back to projects</a></footer>
+      </article>
+    </main>
+  </body>
+</html>
