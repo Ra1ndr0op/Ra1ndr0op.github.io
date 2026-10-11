@@ -64,6 +64,9 @@ $requiredFiles = @(
   "assets\project-minecraft-voxel-poster.jpg",
   "assets\project-consulting-cover-prompt.jpg",
   "assets\electric-poster.css",
+  "assets\project-electric-poster.jpg",
+  "assets\electric-poster-build-in-public.jpg",
+  "assets\electric-poster-creative-session.jpg",
   "assets\blog-doubao-clear-question-thumb.jpg",
   "assets\doubao-clear-question-framework.svg",
   "assets\ra1ndrop-main-logo-black.png",
@@ -393,8 +396,12 @@ foreach ($needle in @("name: electric-poster", "references/style-bible.md", "ref
   Assert-Contains $electricSkill $needle "Electric Poster must preserve its full skill and reference paths"
 }
 $electricProject = Read-Text "projects\electric-poster.html"
-foreach ($needle in @("/api/download-skill?name=electric-poster", "electric-poster.zip", "Download Skill (.zip)", "GitHub Raw", "风格参考", "electric-poster.css")) {
+foreach ($needle in @("/api/download-skill?name=electric-poster", "electric-poster.zip", "Download Skill (.zip)", "GitHub Raw", "project-electric-poster.jpg", "electric-poster-build-in-public.jpg", "electric-poster-creative-session.jpg", "electric-poster.css?v=generated-20261011")) {
   Assert-Contains $electricProject $needle "Electric Poster page must contain: $needle"
+}
+Assert-Contains $index "assets/project-electric-poster.jpg" "Electric Poster home cover must show artwork generated with the skill"
+if ($electricProject -match "随包附带的风格参考|downloads/skills/electric-poster/assets/reference-" -or $index -match "downloads/skills/electric-poster/assets/reference-") {
+  throw "Electric Poster pages must show generated examples instead of the internal reference images"
 }
 
 # Ensure the full download stays installable and matches the published skill files.

@@ -1,12 +1,14 @@
-.electric-reference-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin: 28px 0 44px; }
-.electric-reference-grid figure { margin: 0; min-width: 0; }
-.electric-reference-grid a { display: block; }
-.electric-reference-grid img { display: block; width: 100%; height: auto; border: 1px solid #343434; }
-.electric-reference-grid figcaption { margin-top: 10px; color: #b4b4b4; font-size: 12px; line-height: 1.6; }
-.electric-reference-grid a:focus-visible { outline: 2px solid #fff; outline-offset: 4px; }
+.electric-cover img { display: block; height: auto; }
+.electric-sample-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; margin: 28px 0 44px; }
+.electric-sample-grid figure { margin: 0; min-width: 0; }
+.electric-sample-grid a { display: block; }
+.electric-sample-grid img { display: block; width: 100%; height: auto; border: 1px solid #343434; }
+.electric-sample-grid figcaption { margin-top: 12px; color: #b4b4b4; font-size: 12px; line-height: 1.6; }
+.electric-sample-grid figcaption strong { display: block; margin-bottom: 5px; color: #fff; font-size: 13px; }
+.electric-sample-grid a:focus-visible { outline: 2px solid #fff; outline-offset: 4px; }
 .electric-example { margin-inline: 0; }
 .download-card p code { display: inline; padding: 0; border: 0; background: transparent; }
 .download-actions a { display: inline-flex; align-items: center; min-height: 44px; }
 @media (max-width: 600px) {
-  .electric-reference-grid { grid-template-columns: 1fr; gap: 28px; }
+  .electric-sample-grid { grid-template-columns: 1fr; gap: 28px; }
 }
