@@ -39,6 +39,12 @@ $requiredFiles = @(
   "projects\aiti-ai-type-indicator.html",
   "projects\quick-capture.html",
   "quick-capture\index.html",
+  "quick-response\index.html",
+  "quick-response\landing.css",
+  "quick-response\landing.js",
+  "quick-response\workbench-preview.png",
+  "quick-response\favicon.svg",
+  "functions\api\quick-response-demo.ts",
   "quick-capture\quick-capture-preview.png",
   "assets\blog-ai-artifact-thumb.jpg",
   "assets\blog-ai-cannot-publish-thumb.jpg",
@@ -134,6 +140,8 @@ foreach ($needle in @(
   "assets/product-aiti-cover-ios.jpg",
   "assets/product-aiti-chatgpt.png",
   "Quick Capture",
+  "Quick Response",
+  "quick-response/",
   "quick-capture/",
   "assets/product-quick-capture-cover-ios.jpg",
   "assets/product-quick-capture-icon.png",
@@ -323,6 +331,21 @@ $quickCaptureLanding = Read-Text "quick-capture\index.html"
 foreach ($needle in @("Quick Capture", "/quick-capture/assets/", "./favicon.svg", "让 AI 记住你的想法")) {
   Assert-Contains $quickCaptureLanding $needle "Quick Capture landing page must contain: $needle"
 }
+
+$quickResponseLanding = Read-Text "quick-response\index.html"
+foreach ($needle in @("Quick Response", "./landing.css?v=20261011", "./landing.js?v=20261011", "./workbench-preview.png", "./favicon.svg", "/home.html#products", "https://www.raindropcn.com/quick-response/", "demoForm", "recordPanel")) {
+  Assert-Contains $quickResponseLanding $needle "Quick Response landing page must contain: $needle"
+}
+if ($quickResponseLanding -match '/static/|href="/app"') {
+  throw "Quick Response must not link to unhosted source backend routes"
+}
+$quickResponseScript = Read-Text "quick-response\landing.js"
+Assert-Contains $quickResponseScript "/api/quick-response-demo" "Quick Response form must use the hosted endpoint"
+$quickResponseApi = Read-Text "functions\api\quick-response-demo.ts"
+foreach ($needle in @("waitlist_db", "quick_response_demo_requests")) {
+  Assert-Contains $quickResponseApi $needle "Quick Response API must contain: $needle"
+}
+Assert-Contains $schema "quick_response_demo_requests" "schema.sql must define the Quick Response request table"
 
 $stardewSkill = Read-Text "downloads\skills\stardew-valley-poster\SKILL.md"
 Assert-Contains $stardewSkill "Stardew Valley Poster" "stardew skill download must contain skill body"

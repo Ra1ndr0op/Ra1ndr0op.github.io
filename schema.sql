@@ -14,3 +14,14 @@ CREATE TABLE IF NOT EXISTS comments (
 
 CREATE INDEX IF NOT EXISTS idx_comments_post_created_at
 ON comments (post_slug, created_at DESC);
+
+CREATE TABLE IF NOT EXISTS quick_response_demo_requests (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  name TEXT NOT NULL,
+  company TEXT NOT NULL,
+  email TEXT NOT NULL,
+  team_size TEXT NOT NULL,
+  scenario TEXT NOT NULL,
+  consent INTEGER NOT NULL CHECK (consent = 1),
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);

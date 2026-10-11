@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f8faf9">
+  <meta name="description" content="Quick Response 基于企业知识生成常见咨询回复；知识不足或遇到例外时提示转人工，并通过试点核验回答、交接与成本。">
+  <meta property="og:title" content="Quick Response｜企业 AI 客服工作台">
+  <meta property="og:description" content="基于企业知识生成常见咨询回复；遇到例外时提示转人工，用真实业务问题验证回答、交接与成本。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.raindropcn.com/quick-response/">
+  <meta property="og:image" content="https://www.raindropcn.com/quick-response/workbench-preview.png">
+  <title>Quick Response｜企业 AI 客服工作台</title>
+  <link rel="canonical" href="https://www.raindropcn.com/quick-response/">
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./landing.css?v=20261011">
+  <script src="./landing.js?v=20261011" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到主要内容</a>
+  <header class="site-header" id="top">
+    <div class="header-inner">
+      <a class="brand" href="#top" aria-label="Quick Response 首页">
+        <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span class="brand-name">Quick Response</span>
+      </a>
+      <nav class="primary-nav" id="primaryNav" aria-label="主导航">
+        <a href="#evidence">处理记录</a>
+        <a href="#boundaries">适用边界</a>
+        <a href="#pilot">试点验收</a>
+        <a href="#verification">共同验证</a>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-button" id="themeToggle" type="button" aria-label="切换深色模式" title="切换深色模式"><span aria-hidden="true">◐</span></button>
+        <a class="login-link" href="/home.html#products">Ra1ndrop Products</a>
+        <a class="button button-small button-primary" href="#demo">评估一个场景<span aria-hidden="true">↗</span></a>
+        <button class="icon-button menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="primaryNav" aria-label="打开导航" title="打开导航"><span aria-hidden="true">☰</span></button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="heroTitle">
+      <div class="section-wrap">
+        <div class="hero-copy reveal">
+          <p class="eyebrow"><span></span>为客服团队设计的 AI 工作台</p>
+          <h1 id="heroTitle">让常见咨询先得到回复，<br><span>需要判断时及时转人工。</span></h1>
+          <p class="hero-description">Quick Response 从企业知识中生成常见咨询的回复建议；有依据时展示引用，遇到知识不足或例外则提示转人工。</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#demo">评估一个场景<span aria-hidden="true">↗</span></a>
+            <a class="hero-record-link" href="#evidence">看一条处理示例<span aria-hidden="true">↘</span></a>
+          </div>
+          <div class="hero-proof" aria-label="Quick Response 的处理路径">
+            <div><span>01</span><strong>匹配知识</strong><small>从企业材料中找依据</small></div>
+            <div><span>02</span><strong>生成回复</strong><small>给出可复核的建议</small></div>
+            <div><span>03</span><strong>提示转人工</strong><small>遇到例外不替人决策</small></div>
+          </div>
+        </div>
+        <figure class="hero-media reveal">
+          <div class="hero-media-bar"><span><i></i>Quick Response 工作台</span><small>客服团队 · 对话工作台</small></div>
+          <div class="hero-media-stage">
+            <img src="./workbench-preview.png" width="1600" height="1000" alt="Quick Response 智能客服工作台主界面，包含工作空间导航、知识库入口、常用客服场景和对话输入区" fetchpriority="high">
+            <div class="hero-callout" aria-label="一条咨询的处理路径">
+              <span class="hero-callout-label">当前处理路径</span>
+              <strong>客户问题 → 回复建议 → 转人工</strong>
+              <small>知识不足时不猜答案</small>
+            </div>
+          </div>
+          <figcaption><span><i></i>产品工作台界面 · 主界面与常用场景</span><span>展示产品路径，不代表客户验收结果。</span></figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="evidence-section" id="evidence" aria-labelledby="evidenceTitle">
+      <div class="section-wrap">
+        <div class="section-heading reveal">
+          <p class="eyebrow">看清一条服务路径</p>
+          <h2 id="evidenceTitle">每条处理都可复核，<br><span>需要时及时转人工。</span></h2>
+          <p>从客户问题开始，依次查看知识匹配、回复建议和下一步。切换不同示例，比较正常回答与人工接管。</p>
+        </div>
+        <div class="record-demo reveal" id="workflow">
+          <div class="record-top">
+            <div class="record-tabs" role="tablist" aria-label="选择处理示例">
+              <button id="tab-policy" role="tab" aria-selected="true" aria-controls="recordPanel" data-example="policy" type="button">知识问答</button>
+              <button id="tab-billing" role="tab" aria-selected="false" aria-controls="recordPanel" data-example="billing" tabindex="-1" type="button">账单争议</button>
+              <button id="tab-missing" role="tab" aria-selected="false" aria-controls="recordPanel" data-example="missing" tabindex="-1" type="button">知识不足</button>
+            </div>
+            <span class="demo-label">可交互产品演示 · 非生产运行记录</span>
+          </div>
+          <div class="record-panel" id="recordPanel" role="tabpanel" aria-labelledby="tab-policy" tabindex="0">
+            <div class="record-question"><span>客户问题</span><p id="recordQuestion">“知识库支持上传哪些文档？”</p></div>
+            <ol class="record-flow" aria-label="示例处理路径">
+              <li><span class="step-number">01</span><small>问题分流</small><strong id="recordAgent">知识问答 Agent</strong><p id="recordRoute">匹配知识库使用说明</p></li>
+              <li><span class="step-number">02</span><small>知识依据</small><strong id="recordSource">知识库接入说明</strong><p id="recordSourceDetail">匹配文件格式与上传限制</p></li>
+              <li><span class="step-number">03</span><small>下一步</small><strong id="recordNext">说明支持范围</strong><p id="recordNextDetail">提醒文档仍需符合上传限制</p></li>
+            </ol>
+            <div class="record-bottom">
+              <div class="record-answer"><span>回复建议</span><p id="recordAnswer">支持 TXT、Markdown、JSON、可搜索 PDF 和 DOCX。文件大小、页数和文本长度也有上限，上传前应先检查。</p></div>
+              <details class="source-detail"><summary>查看引用片段<span aria-hidden="true">⌄</span></summary><p id="recordExcerpt">知识库支持 TXT、Markdown、JSON、可搜索 PDF 与 DOCX。上传仍受文件大小、页数和文本长度限制。</p></details>
+            </div>
+          </div>
+        </div>
+        <div class="evidence-footer"><span>示例用于理解产品路径；在线工作台尚未开放，答案质量、引用和人工接管效果需用团队样本验证。</span><a class="under-link" href="#demo">申请工作台试点<span aria-hidden="true">↗</span></a></div>
+      </div>
+    </section>
+
+    <section class="boundaries-section section-wrap" id="boundaries" aria-labelledby="boundaryTitle">
+      <div class="section-heading reveal">
+        <p class="eyebrow"><span></span>再判断场景是否适合</p>
+        <h2 id="boundaryTitle">从适合的问题开始，<br><span>把人工留给需要判断的部分。</span></h2>
+        <p>先看清产品如何处理一条咨询，再判断哪些问题适合先试、哪些情况应该转人工。</p>
+      </div>
+      <div class="boundary-grid">
+        <article class="boundary-column reveal">
+          <div class="boundary-heading"><span class="symbol" aria-hidden="true">✓</span><span>适合先试</span></div>
+          <h3>这些问题，可以先交给 Quick Response。</h3>
+          <ul class="boundary-list">
+            <li><strong>产品使用</strong><span>操作说明、常见问题、标准排查步骤</span></li>
+            <li><strong>服务政策</strong><span>售后条件、服务范围、既定处理流程</span></li>
+            <li><strong>账单答疑</strong><span>计费规则、付款方式、核验材料说明</span></li>
+          </ul>
+          <p class="boundary-note">企业知识要经过整理与维护，引用仍需要复核。</p>
+        </article>
+        <article class="boundary-column boundary-human reveal">
+          <div class="boundary-heading"><span class="symbol" aria-hidden="true">↗</span><span>人工接管或评估接入</span></div>
+          <h3>这些情况，应该提示转人工。</h3>
+          <ul class="boundary-list">
+            <li><strong>资金与账户</strong><span>退款执行、账单修改、账户变更</span></li>
+            <li><strong>实时业务信息</strong><span>订单、支付与账户状态需接入授权系统</span></li>
+            <li><strong>例外与争议</strong><span>投诉、高风险个案、知识缺失或冲突</span></li>
+          </ul>
+          <p class="boundary-note">当前不执行退款或账单修改。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="pilot-section section-wrap" id="pilot" aria-labelledby="pilotTitle">
+      <div class="section-heading reveal">
+        <h2 id="pilotTitle">先约定怎么算，<br><span>再讨论值不值得。</span></h2>
+        <p>一组固定样本、一份人工处理基线、同一个评估周期。质量、失败个案和完整成本一起复盘。</p>
+      </div>
+      <div class="acceptance-toolbar reveal"><span>试点验收清单（建议口径）</span><button class="under-link download-button" id="downloadChecklist" type="button" title="下载可填写的试点验收清单 CSV"><span aria-hidden="true">↓</span>下载验收清单</button></div>
+      <div class="acceptance-table reveal" role="region" aria-label="建议的试点验收口径" tabindex="0">
+        <table>
+          <thead><tr><th scope="col">看什么</th><th scope="col">怎么核验</th><th scope="col">留下什么证据</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">回答质量</th><td>业务人员复核答案与引用是否一致</td><td>固定样本、判定规则、失败个案</td></tr>
+            <tr><th scope="row">服务效率</th><td>比较收到问题到有效答复的时间</td><td>人工基线、会话时间、运行周期</td></tr>
+            <tr><th scope="row">人工接管</th><td>检查应转人工的个案是否正确交接</td><td>接管记录、漏转个案、人工复核时间</td></tr>
+            <tr><th scope="row">完整成本</th><td>合并模型、服务、维护与复核费用</td><td>用量记录、费用账单、成本测算</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="table-note">试点样本、评估阈值及停止与扩展条件由双方事先确认；此处仅为参考框架，不代表客户实测结果。</p>
+      <details class="cost-tool reveal" id="costTool">
+        <summary><span><span class="cost-symbol" aria-hidden="true">∑</span>用自己的数据，算一笔试点账</span><span aria-hidden="true">＋</span></summary>
+        <div class="cost-layout">
+          <form class="cost-inputs" id="costForm">
+            <label>每月纳入评估的咨询量 / 次<input name="cases" type="number" min="0" max="100000000" step="1" inputmode="numeric" placeholder="填写咨询量" required></label>
+            <label>当前每次人工处理 / 分钟<input name="baseline" type="number" min="0" max="100000" step="0.1" inputmode="decimal" placeholder="填写当前耗时" required></label>
+            <label>试点后每次人工处理与复核 / 分钟<input name="review" type="number" min="0" max="100000" step="0.1" inputmode="decimal" placeholder="包含接管与抽查的平均耗时" required></label>
+            <label>人工综合成本 / 元每小时<input name="hourly" type="number" min="0" max="10000000" step="0.01" inputmode="decimal" placeholder="工资及相关成本" required></label>
+            <label class="cost-wide">每月模型、服务与维护费用 / 元<input name="fees" type="number" min="0" max="100000000" step="0.01" inputmode="decimal" placeholder="使用你的实际账单或预算" required></label>
+          </form>
+          <div class="cost-result" aria-live="polite">
+            <span>按填写数据估算的月度成本差</span><output id="costResult">待填写</output><p id="costExplanation">填写五项数据后计算；正值表示估算的人工工时价值扣除月费后仍为正，负值表示月费更高。</p>
+            <small>计算方式：咨询量 ×（当前每次人工处理时长 − 试点后每次人工处理与复核时长）× 人工小时成本 ÷ 60 − 每月费用。正值不等于实际现金节省；结果不含一次性实施、流程改造及未录入成本，不代表完整 ROI。</small>
+          </div>
+        </div>
+      </details>
+    </section>
+
+    <section class="verification-section" id="verification" aria-labelledby="verificationTitle">
+      <div class="section-wrap verification-layout">
+        <div class="verification-copy reveal">
+          <p class="eyebrow">共同验证，比单方面承诺更有用</p>
+          <h2 id="verificationTitle">把你的问题带来，<br>一起现场验证。</h2>
+          <p>从脱敏的真实咨询开始，用团队知识进行测试与复核，并保留失败个案。</p>
+          <p class="publication-note">目前公开内容为产品演示，尚无可公开的客户验收案例；案例公开须另行授权。</p>
+        </div>
+        <ol class="verification-steps reveal">
+          <li><span>01</span><div><h3>带来一个明确场景</h3><p>提供脱敏问题、已有知识和必须转人工的情形。</p></div></li>
+          <li><span>02</span><div><h3>在同一批样本上复核</h3><p>看答案、引用、交接与失败原因，不只看一次演示。</p></div></li>
+          <li><span>03</span><div><h3>共同留下验收材料</h3><p>确认样本范围、评估结果和成本；案例公开范围另行授权。</p></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="product-section section-wrap" id="product" aria-labelledby="productTitle">
+      <div class="section-heading reveal">
+        <h2 id="productTitle">当前能力与接入边界</h2>
+        <p>产品原型支持在工作空间中管理成员、知识、Agent 配置和使用额度。在线工作台尚未开放；独立工作台、API Key 及 CRM、呼叫中心等第三方系统的接入范围，将在试点评估时确认。</p>
+      </div>
+      <div class="product-controls" id="security">
+        <article class="reveal"><span class="product-symbol" aria-hidden="true">01</span><h3>团队与权限</h3><p>按工作空间组织会话和知识，区分管理员、成员与访客。</p></article>
+        <article class="reveal"><span class="product-symbol" aria-hidden="true">02</span><h3>Agent 与知识</h3><p>维护知识文档，配置 Agent、模型、工具范围和人工接管。</p></article>
+        <article class="reveal"><span class="product-symbol" aria-hidden="true">03</span><h3>用量与记录</h3><p>查看工作空间额度、模型用量和管理操作审计。</p></article>
+      </div>
+      <div class="plans-row reveal" id="plans"><div><h3>试点范围决定合作方案。</h3><p>团队价格、模型费用和部署范围在评估后确认；目前不提供在线支付或自动续费。</p></div><a class="button button-secondary" href="#demo">评估一个场景<span aria-hidden="true">↗</span></a></div>
+    </section>
+
+    <section class="faq-section section-wrap" aria-labelledby="faqTitle">
+      <div class="faq-heading reveal"><h2 id="faqTitle">采购前，<br>你可能还想知道。</h2></div>
+      <div class="faq-list reveal">
+        <details><summary>AI 会直接执行退款或修改账单吗？<span aria-hidden="true">＋</span></summary><p>不会。系统可提供规范查询与处理建议；涉及资金或账户操作时，会提示转人工，由团队按授权流程处理。</p></details>
+        <details><summary>知识引用能保证回答正确吗？<span aria-hidden="true">＋</span></summary><p>不能。文档过期、知识冲突和模型理解偏差仍可能发生。试点应复核答案与引用，保留失败个案，并明确转人工规则。</p></details>
+        <details><summary>知识库支持上传哪些文档？<span aria-hidden="true">＋</span></summary><p>支持 TXT、Markdown、JSON、可搜索 PDF 和 DOCX；文件大小、页数和文本长度均有限制。</p></details>
+        <details><summary>什么情况下应该停止试点？<span aria-hidden="true">＋</span></summary><p>当知识缺口、质量问题、应转未转的个案或完整成本没有达到双方约定的要求时，应先暂停、补充知识或调整流程。停止与扩展条件在试点开始前确认。</p></details>
+      </div>
+    </section>
+
+    <section class="demo-section" id="demo" aria-labelledby="demoTitle">
+      <div class="section-wrap demo-layout">
+        <div class="demo-copy reveal">
+          <h2 id="demoTitle">下一个问题，<br><span>来自你的团队。</span></h2>
+          <p>告诉我们团队规模和优先场景。我们先判断知识是否够用、边界是否明确，再讨论试点与合作范围。</p>
+          <ol class="demo-next-steps" aria-label="提交后的评估流程">
+            <li><span>01</span><div><strong>提交一个优先场景</strong><small>不需要提供客户个人信息或订单凭证。</small></div></li>
+            <li><span>02</span><div><strong>确认知识与转人工边界</strong><small>一起定义样本、失败个案和核验方式。</small></div></li>
+            <li><span>03</span><div><strong>决定是否进入试点</strong><small>先看真实问题，再确认合作范围。</small></div></li>
+          </ol>
+          <div class="demo-assurance"><span class="symbol" aria-hidden="true">✓</span><span>请勿提交客户个人信息、订单号或账户凭证。</span></div>
+        </div>
+        <form class="demo-form reveal" id="demoForm" novalidate>
+          <div class="form-row"><label for="leadName">你的称呼</label><input id="leadName" name="name" autocomplete="name" minlength="2" maxlength="80" required placeholder="例如：林女士"></div>
+          <div class="form-row"><label for="leadCompany">公司或团队</label><input id="leadCompany" name="company" autocomplete="organization" minlength="2" maxlength="120" required placeholder="公司名称"></div>
+          <div class="form-row"><label for="leadEmail">工作邮箱</label><input id="leadEmail" name="email" type="email" autocomplete="email" maxlength="200" required placeholder="name@company.com"></div>
+          <div class="form-split">
+            <div class="form-row"><label for="leadTeamSize">客服团队规模</label><select id="leadTeamSize" name="team_size" required><option value="">请选择</option><option value="1-5">1–5 人</option><option value="6-20">6–20 人</option><option value="21-100">21–100 人</option><option value="100+">100 人以上</option></select></div>
+            <div class="form-row"><label for="leadScenario">优先场景</label><select id="leadScenario" name="scenario" required><option value="">请选择</option><option value="账单与售后">账单与售后</option><option value="技术支持">技术支持</option><option value="知识库问答">知识库问答</option><option value="其他客服场景">其他客服场景</option></select></div>
+          </div>
+          <label class="consent-row"><input type="checkbox" name="consent" required><span>我同意 Quick Response 保存本申请，用于处理场景评估咨询。</span></label>
+          <p class="privacy-note">申请会保存在系统中供团队查看。目前站点未接入邮件或 CRM 自动通知，需由工作人员查看申请后手动跟进。请勿填写客户个人信息、订单号或账户凭证。</p>
+          <div class="honeypot" aria-hidden="true"><label for="leadWebsite">网站</label><input id="leadWebsite" name="website" tabindex="-1" autocomplete="off"></div>
+          <button class="button button-primary form-submit" type="submit">提交评估申请<span aria-hidden="true">↗</span></button>
+          <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-main section-wrap">
+      <a class="brand" href="#top"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><span class="brand-name">Quick Response</span></a>
+      <p>企业 AI 客服工作台</p>
+      <div class="footer-links"><a href="#boundaries">适用边界</a><a href="#pilot">试点验收</a><a href="/home.html#products">Ra1ndrop Products</a></div>
+    </div>
+    <div class="footer-bottom section-wrap"><span>© <span id="currentYear"></span> Quick Response</span><span>AI 回答需核验；高风险操作由人工处理。</span></div>
+  </footer>
+</body>
+</html>
