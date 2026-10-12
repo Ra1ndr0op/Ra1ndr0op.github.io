@@ -33,6 +33,7 @@ $requiredFiles = @(
   "posts\doubao-clear-question.html",
   "posts\ai-build-artifacts.html",
   "posts\ai-cannot-publish.html",
+  "posts\low-ego-world-exam.html",
   "projects\stardew-valley-poster.html",
   "projects\minecraft-voxel-poster.html",
   "projects\electric-poster.html",
@@ -53,6 +54,7 @@ $requiredFiles = @(
   "quick-capture\quick-capture-preview.png",
   "assets\blog-ai-artifact-thumb.jpg",
   "assets\blog-ai-cannot-publish-thumb.jpg",
+  "assets\blog-low-ego-cover.jpg",
   "assets\ai-artifact-framework.svg",
   "assets\ai-judgment-framework.jpg",
   "assets\product-aiti-cover-ios.jpg",
@@ -187,6 +189,8 @@ foreach ($needle in @(
   "posts/ai-build-artifacts.html",
   "assets/blog-ai-artifact-thumb.jpg",
   "posts/ai-cannot-publish.html",
+  "posts/low-ego-world-exam.html",
+  "assets/blog-low-ego-cover.jpg",
   "Notes",
   "Read More Post",
   "Who Is Ra1ndrop?"
@@ -293,7 +297,7 @@ if ($cname -ne "www.raindropcn.com") {
   throw "CNAME must equal www.raindropcn.com"
 }
 
-foreach ($postName in @("ai-native-builder.html", "doubao-clear-question.html", "ai-build-artifacts.html", "ai-cannot-publish.html")) {
+foreach ($postName in @("ai-native-builder.html", "doubao-clear-question.html", "ai-build-artifacts.html", "ai-cannot-publish.html", "low-ego-world-exam.html")) {
   $post = Read-Text "posts\$postName"
   foreach ($needle in @("letter-page", "letter-subscribe", "letter-article", "letter-meta", "Not A Subscriber?", "Read The", "../assets/comments.js", "../home.html#writing", "../home.html#subscribe")) {
     Assert-Contains $post $needle "post page $postName must contain: $needle"
@@ -316,6 +320,11 @@ foreach ($needle in @("assets/doubao-clear-question-framework.svg", "letter-figu
 $oldAiPost = Read-Text "posts\ai-cannot-publish.html"
 foreach ($needle in @("assets/ai-judgment-framework.jpg", "letter-figure", "letter-callout", "letter-list")) {
   Assert-Contains $oldAiPost $needle "AI article must contain: $needle"
+}
+
+$lowEgoPost = Read-Text "posts\low-ego-world-exam.html"
+foreach ($needle in @("assets/blog-low-ego-cover.jpg", "letter-callout", "letter-list", "data-post-slug=""low-ego-world-exam""", "低 Ego：一个人如何不再把世界当考场", "datetime=""2026-10-12""")) {
+  Assert-Contains $lowEgoPost $needle "Low Ego article must contain: $needle"
 }
 
 foreach ($projectName in @("stardew-valley-poster.html", "minecraft-voxel-poster.html", "consulting-cover-prompt.html", "electric-poster.html")) {
