@@ -1,4 +1,5 @@
 $ErrorActionPreference = "Stop"
+Import-Module Microsoft.PowerShell.Utility
 $root = Split-Path -Parent $MyInvocation.MyCommand.Path
 
 function Read-Text($relativePath) {
@@ -54,6 +55,7 @@ $requiredFiles = @(
   "quick-response\app\demo-data.js",
   "functions\api\quick-response-demo.ts",
   "quick-capture\quick-capture-preview.png",
+  "quick-capture\quick-capture-logo.png",
   "assets\blog-ai-artifact-thumb.jpg",
   "assets\blog-ai-cannot-publish-thumb.jpg",
   "assets\blog-low-ego-cover.jpg",
@@ -370,7 +372,7 @@ foreach ($needle in @("QUICK_CAPTURE_DOWNLOADS", "quick-capture/quick-capture-0.
 }
 
 $quickCaptureLanding = Read-Text "quick-capture\index.html"
-foreach ($needle in @("Quick Capture", "/quick-capture/assets/", "./favicon.svg", "让 AI 记住你的想法")) {
+foreach ($needle in @("Quick Capture", "/quick-capture/assets/", "./quick-capture-logo.png", "让 AI 记住你的想法")) {
   Assert-Contains $quickCaptureLanding $needle "Quick Capture landing page must contain: $needle"
 }
 
