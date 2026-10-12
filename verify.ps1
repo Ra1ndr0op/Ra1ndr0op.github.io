@@ -23,6 +23,8 @@ $requiredFiles = @(
   "home.html",
   "styles.css",
   "CNAME",
+  "_headers",
+  "downloads\books\low-ego-expanded.docx",
   "functions\api\subscribe.ts",
   "functions\api\download-skill.ts",
   "functions\api\comments.ts",
@@ -323,8 +325,13 @@ foreach ($needle in @("assets/ai-judgment-framework.jpg", "letter-figure", "lett
 }
 
 $lowEgoPost = Read-Text "posts\low-ego-world-exam.html"
-foreach ($needle in @("assets/blog-low-ego-cover.jpg", "letter-callout", "letter-list", "data-post-slug=""low-ego-world-exam""", "低 Ego：一个人如何不再把世界当考场", "datetime=""2026-10-12""")) {
+foreach ($needle in @("assets/blog-low-ego-cover.jpg", "letter-callout", "letter-list", "data-post-slug=""low-ego-world-exam""", "低 Ego：一个人如何不再把世界当考场", "datetime=""2026-10-12""", "../downloads/books/low-ego-expanded.docx", "download=""低Ego_一个人如何不再把世界当考场_扩写版.docx""")) {
   Assert-Contains $lowEgoPost $needle "Low Ego article must contain: $needle"
+}
+
+$bookHeaders = Read-Text "_headers"
+foreach ($needle in @("/downloads/books/low-ego-expanded.docx", "Content-Type: application/vnd.openxmlformats-officedocument.wordprocessingml.document", "Content-Disposition: attachment; filename=""low-ego-expanded.docx""", "filename*=UTF-8''")) {
+  Assert-Contains $bookHeaders $needle "Book download headers must contain: $needle"
 }
 
 foreach ($projectName in @("stardew-valley-poster.html", "minecraft-voxel-poster.html", "consulting-cover-prompt.html", "electric-poster.html")) {
