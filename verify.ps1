@@ -1,6 +1,15 @@
 $ErrorActionPreference = "Stop"
-Import-Module Microsoft.PowerShell.Utility
 $root = Split-Path -Parent $MyInvocation.MyCommand.Path
+
+function Get-FileSha256($path) {
+  $hashAlgorithm = [Security.Cryptography.SHA256]::Create()
+  try {
+    return [BitConverter]::ToString($hashAlgorithm.ComputeHash([IO.File]::ReadAllBytes($path))).Replace("-", "")
+  }
+  finally {
+    $hashAlgorithm.Dispose()
+  }
+}
 
 function Read-Text($relativePath) {
   return Get-Content -Raw -Encoding UTF8 (Join-Path $root $relativePath)
@@ -435,7 +444,7 @@ try {
     $entryHash = [Security.Cryptography.SHA256]::Create()
     try { $zipHash = [BitConverter]::ToString($entryHash.ComputeHash($entryStream)).Replace("-", "") }
     finally { $entryStream.Dispose(); $entryHash.Dispose() }
-    $diskHash = (Get-FileHash -Algorithm SHA256 -LiteralPath (Join-Path $root "downloads/skills/electric-poster/$relativePath")).Hash
+    $diskHash = Get-FileSha256 (Join-Path $root "downloads/skills/electric-poster/$relativePath")
     if ($zipHash -ne $diskHash) { throw "Electric Poster ZIP differs from the published skill: $relativePath" }
   }
 }
