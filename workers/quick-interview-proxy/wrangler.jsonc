@@ -1,0 +1,15 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "quick-interview-path-proxy",
+  "main": "src/index.js",
+  "compatibility_date": "2026-10-19",
+  "workers_dev": false,
+  "routes": [
+    { "pattern": "www.raindropcn.com/quick-interview", "zone_name": "raindropcn.com" },
+    { "pattern": "www.raindropcn.com/quick-interview/*", "zone_name": "raindropcn.com" }
+  ],
+  "vars": {
+    "ORIGIN_HOSTNAME": "quick-interview-origin.raindropcn.com",
+    "PAGES_HOSTNAME": "ra1ndr0op.pages.dev"
+  }
+}
