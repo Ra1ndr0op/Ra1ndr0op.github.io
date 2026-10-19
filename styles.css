@@ -732,7 +732,7 @@ h3 {
 
 .product-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 16px;
 }
 
@@ -781,6 +781,7 @@ h3 {
   grid-column: 1 / -1;
   grid-row: 1;
   width: 100%;
+  height: auto;
   aspect-ratio: 1.9 / 1;
   margin-bottom: 12px;
   object-fit: cover;
